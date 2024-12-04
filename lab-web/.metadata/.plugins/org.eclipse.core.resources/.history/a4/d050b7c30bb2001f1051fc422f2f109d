@@ -1,0 +1,13 @@
+@charset "UTF-8";  /* CSS 파일의 인코딩 선언*/
+
+/*
+ * CSS 문법:
+ * selector {
+ *     property: value;
+ *     ...
+ * }
+ */
+ 
+body {
+    background-color: Pink; /* 바탕색 */
+}

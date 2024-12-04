@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Lab02 CSS</title>
+	</head>
+	<body>
+		<nav> <!-- navigation division(페이지 이동 선택 메뉴 영역) -->
+        </nav>
+	</body>
+</html>

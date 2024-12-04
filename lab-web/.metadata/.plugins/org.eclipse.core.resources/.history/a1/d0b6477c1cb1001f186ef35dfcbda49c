@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>lab01</title>
+    </head>
+        <body>
+        
+            <a href="index.html">인덱스 페이지</a>
+            
+            <h1>Section Tag</h1>
+            
+            <!--위에서 아래로 적혀지는게 블록요소 -->
+            <h2>Block section tag</h2>
+            <div style="border: 2px solid black; margin: 16px;">Division 1</div>
+            <div>Division 2</div>
+        </body>
+</html>

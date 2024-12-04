@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>lab01</title>
+	</head>
+	<body>
+		<a href= "index.html">인덱스 페이지</a>
+        <h1>HTML 이미지</h1>
+        <h2>이미지 요소</h2>
+        <img alt="레코드" src="images/image01.jpg" />
+        <!-- alt는 이미지를 못찾았을때 사용되는건 아니고  -->
+        <img alt="여자이미지" src="images/image02.jpg" />
+        <!-- img요소는 왼쪽에서 오른쪽으로 배치되고, 
+        가로/세로를 설정할 수 있는 inline-block 요소 -->
+	</body>
+</html>

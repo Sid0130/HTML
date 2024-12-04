@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Lab01</title>
+	</head>
+	<body>
+		<a href="index.html">인덱스 페이지</a>
+        
+        <h1>HTML 리스트</h1>
+        
+        <h2>순서가 없는 리스트(unordered list)</h2>
+        <ul style="list-style: decimal;">
+            <!-- 리스트 아이템(list item) -->
+            <li>1승</li>
+            <li>모아나2</li>
+            <li>소방관</li>
+            <li>위키드</li>
+        </ul>
+	</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Lab02 CSS</title>
+	</head>
+	<body>
+    
+<!-- 메인이라는 의미만 갖고있는 -->
+		<main> <!-- 웹 페이지의 주요 영역(main devision)라는 의미를 갖는 태그. -->
+            <section> <!-- 웹 페이지의 섹션 영역(section division)이라는 의미를 갖는 태그. -->
+            </section>
+        </main>
+	</body>
+</html>
