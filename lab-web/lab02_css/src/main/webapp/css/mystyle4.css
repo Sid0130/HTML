@@ -54,8 +54,12 @@ main{
 	font-size: 20px;
 }
 
+.mylink:hover{
+    color: blue;
+}
+
 .mylink:active{
-	color: blue;
+	color: red;
 }
 
 

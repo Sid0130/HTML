@@ -65,3 +65,11 @@
 12월 04, 2024 17:20:50.51 [2700:6660:1204/172050.512:ERROR:interface_endpoint_client.cc(725)] Message 1 rejected by interface blink.mojom.WidgetHost
 12월 04, 2024 17:58:22.06 [2700:6660:1204/175822.060:ERROR:interface_endpoint_client.cc(725)] Message 1 rejected by interface blink.mojom.WidgetHost
 12월 04, 2024 17:58:22.06 [2700:6660:1204/175822.060:ERROR:interface_endpoint_client.cc(725)] Message 1 rejected by interface blink.mojom.WidgetHost
+
+12월 06, 2024 09:33:36.45 NEW SESSION
+12월 06, 2024 09:33:36.45 Created TensorFlow Lite XNNPACK delegate for CPU.
+12월 06, 2024 09:33:36.57 [6904:18552:1206/093336.570:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+12월 06, 2024 09:33:56.92 [6904:18552:1206/093356.928:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+12월 06, 2024 09:34:51.97 [6904:18552:1206/093451.973:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+12월 06, 2024 09:36:09.81 Created TensorFlow Lite XNNPACK delegate for CPU.
+12월 06, 2024 09:36:09.93 [10132:18488:1206/093609.933:ERROR:registration_request.cc(291)] Registration response error message: QUOTA_EXCEEDED

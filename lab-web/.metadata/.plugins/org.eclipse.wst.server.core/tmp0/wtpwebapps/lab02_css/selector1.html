@@ -23,7 +23,19 @@
             #div3 {
                 color: yellow; /*lightgray*/                
             }
-        
+            
+            /* tag#id.class */ 
+            p.color-white { /* p tag 요소들 중에서 클래스가 color-white인 요소(들) 공백없이 붙여서 써여함*/
+                color:white;
+                background-color:DarkGray;
+                
+            }
+            
+            
+            p#p3 { /* p tag 요소들 중에서 아이디가 p3인 요소 */
+                color: red;
+            }
+            
         </style>
 	</head>
 	<body>
@@ -42,6 +54,12 @@
             <div id="div3">Division 3</div>
             <div id="div3">Division 4</div>
             <!-- 아이디는 하나만 지정해주는게 좋다. -->
+            
+            <!-- 모든 p태그는 위 아래 마진이 있다. -->
+            <p class = "color-white">Paragraph 1</p>
+            <p class = "color-white">Paragraph 2</p>
+            <p id="p3">Paragraph 3</p>
+            
             
         </main>
 	</body>
