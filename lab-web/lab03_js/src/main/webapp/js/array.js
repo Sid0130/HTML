@@ -32,7 +32,7 @@ output.innerHTML += html + '<br />';
 
 // JS for-in 문장: 배열의 인덱스를 반복(iteration)
 html ='';
-for(const i in numbers){
+for(const i in numbers){ // 배열의 인덱스를 뽑는것
     html += `${i} ${numbers[i]}, :`;
 }
 output.innerHTML += html + '<br />';
@@ -59,3 +59,22 @@ for(const item of movies){
 }
 list.innerHTML += html;
 
+//-------------------------------------------------------------------------------
+// destructuring assignment(분해 할당)
+const array = [1, 2, 3];
+const [x, y, z] = array;
+// 첫번째 두번째 세번째 각각 x = 1, y= 2 , z=3 할당하는것
+output.innerHTML += `x = ${x}, y= ${y}, z= ${z} <br />`;
+
+// 배열의 아이템 개수보다 적은 desturcturing assignment
+const [a, b] = array;
+output.innerHTML += `a = ${a}, b= ${b} <br />`;
+
+// 배열의 아이템 개수보다 많은 desturcturing assignment
+const [c, d, e, f] = array;
+output.innerHTML += `c = ${c}, d = ${d}, e = ${e}, f = ${f} <br />`;
+
+// rest 연산자(...)를 사용한 desturcturing assignment
+const[g, ...h] = array;
+output.innerHTML += `g = ${g}, h = ${h} <br />`
+// ->g = 1, h의 나머지 값들은 배열이 들어감. 출력은 2,3으로 나오지만 h = [2, 3]

@@ -73,3 +73,8 @@
 12월 06, 2024 09:34:51.97 [6904:18552:1206/093451.973:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
 12월 06, 2024 09:36:09.81 Created TensorFlow Lite XNNPACK delegate for CPU.
 12월 06, 2024 09:36:09.93 [10132:18488:1206/093609.933:ERROR:registration_request.cc(291)] Registration response error message: QUOTA_EXCEEDED
+
+12월 09, 2024 18:05:53.21 NEW SESSION
+12월 09, 2024 18:05:53.22 Created TensorFlow Lite XNNPACK delegate for CPU.
+12월 09, 2024 18:05:53.44 [18796:2908:1209/180553.445:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+12월 09, 2024 18:06:21.17 [18796:2908:1209/180621.169:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
