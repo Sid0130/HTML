@@ -47,7 +47,7 @@ console.log(result); //-> 정렬된 배열이 리턴됨.
 
 // Array.toSorted(callback): 배열 아이템의 크기 비교에서 사용될 콜백(함수)를 아규먼트로 전달.
 // callback (x, y) => 숫자. x가 크면 양수, y가 크면 음수 같으면 x와 y가 같으면 0을 리턴
-// 음수가 나오는게 작은 숫자.
+// 음수가 나오는게 작은 숫자. 양수면 큰 숫자
 result = arr2.toSorted((x, y) => x - y);
 console.log(result);
 
@@ -61,7 +61,8 @@ arr2.sort((x, y) => x - y);
 console.log(arr2);
 
 
-// Array.forEach, Array.filter. Array.map, Array. reduce
+
+// Array.forEach, Array.filter. Array.map, Array. reduce ---------------------------------------
 const numbers = [1, 2, 3, 4, 5, 6];
 console.log(numbers);
 
@@ -84,7 +85,7 @@ for(const x of numbers){
 console.log(odds);
 
 // ----------------------  TODO: Array.filter 메서드를 사용.
-const odds2 = numbers.filter(numbers => numbers % 2 === 1);
+const odds2 = numbers.filter(x => x % 2 === 1);
 console.log(odds2);
 
 
@@ -97,8 +98,9 @@ for(const x of numbers) {
 console.log(squares);
 
 // ----------------------  TODO: Array.map 메서드를 사용.
-let squares2 = numbers.map(numbers => numbers * numbers);
-console.log(squares2);
+result = numbers.map(x => x * x); // 맵은 새로운 배열에 저장하는 아이템으로 사용하는 용도고 ,
+// 필터는 조건식에서 새로운 배열에 저장할지 안할지 사용하는 용도
+console.log(result);
 
 // 배열 numbers의 아이템들 중에서 홀수들의 제곱을 아이템으로 갖는 새로운 배열을 만들고 출력.
 const oddSquares = []; // 홀수의 제곱들을 저장할 배열.
@@ -110,8 +112,8 @@ for(const x of numbers) {
 console.log(oddSquares);
 
 // ----------------------  TODO: Array.filter, Array.map 메서드를 연쇄 호출. numbers.filter().map();
-const oddSquares2 = numbers.filter(numbers => numbers % 2 === 1).map(numbers => numbers * numbers);
-console.log(oddSquares2);
+result = numbers.filter(x => x % 2 === 1).map(x => x * x);
+console.log(result);
 
 // 배열 numbers의 모든 아이템들의 합계를 계산하고 출력.
 let total = 0;
@@ -120,18 +122,24 @@ for(const x of numbers){
 }
 console.log(total);
 
-// ----------------------  TODO: Array.reduce 메서드를 호출.
-total = 0;
-total = numbers.reduce((total, numbers) => total + numbers, 0);
+// ----------------------  TODO: Array.reduce(callback, initialValue) 메서드를 호출.
+
+result = numbers.reduce((acc, cur) => acc + cur, 0);
 console.log(total);
     
 // numbers의 모든 원소들의 곱(1*2*3*4*5*6)을 계산하고 출력. reduce
+//result = 1;
+//for(const x of numbers){
+//    result = result * x; // result *= x;
+//}
+//colnsole.log(result);
+result = numbers.reduce((before, current) => before * current, 1);
+// reduce는 before에 before * current 를 계속해서 저장해줌 , current는 배열에서 원소들을 갖고옴
+console.log(result);
 
-let multiply = numbers.reduce((multiply, numbers) => multiply * numbers, 1);
-console.log(multiply);
 // numbers의 아이템들 중에서 짝수들의 합 (2+4+6)을 계산하고 출력. filter reduce
 
-let even = numbers.filter(numbers => numbers % 2 === 0).reduce((even, numbers) => even + numbers, 0);
+let even = numbers.filter(x => x % 2 === 0).reduce((even, numbers) => even + numbers, 0);
 console.log(even);
 // numbers의 아이템의 제곱들의 합(1*1 + 2*2 + 3*3 + ...)을 계산하고 출력 map, reduce
 
@@ -139,6 +147,6 @@ let squares3 = numbers.map(numbers => numbers * numbers).reduce((squares3, numbe
 console.log(squares3);
 // numbers의 아이템들 중에서 짝수의 제곱들의 합(2*2 + 4*4 + 6*6)을 계산하고 출력. 전부다
 
-let allSumSquares = numbers.filter(numbers => numbers % 2 === 0).map(numbers => numbers * numbers)
-.reduce((allSumSquares, numbers) => allSumSquares + numbers, 0);
+let allSumSquares = numbers.filter(x => x % 2 === 0).map(x => x * x)
+.reduce((acc, cur) => acc + cur, 0); // 배열의 원소는 cur로 들어가고 acc는 curㄹ 이용해서 계속해서 더 해지는 값
 console.log(allSumSquares);

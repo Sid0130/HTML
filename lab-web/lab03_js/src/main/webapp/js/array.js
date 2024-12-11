@@ -60,7 +60,7 @@ for(const item of movies){
 list.innerHTML += html;
 
 //-------------------------------------------------------------------------------
-// destructuring assignment(분해 할당)
+// destructuring assignment(구조분해 할당)
 const array = [1, 2, 3];
 const [x, y, z] = array;
 // 첫번째 두번째 세번째 각각 x = 1, y= 2 , z=3 할당하는것
