@@ -41,14 +41,14 @@ println2(student2);
 println3(student2);
 
 
-function printStudent({name, ...rest}){ // 지역변수 선언이고
-    console.log(` name = ${name} `);
-    console.log(rest);
-}
-
-printStudent(student1);
-printStudent(student2);
-printStudent({name: '아이티', no: 123, email: 'it@itwill.com'}); 
+//function printStudent({name, ...rest}){ // 지역변수 선언이고
+//    console.log(` name = ${name} `);
+//    console.log(rest);
+//}
+//
+//printStudent(student1);
+//printStudent(student2);
+//printStudent({name: '아이티', no: 123, email: 'it@itwill.com'}); 
 // 구조분해 할당과 객체 구분은 해야함.
 
 
