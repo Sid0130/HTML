@@ -1,10 +1,10 @@
-<%@ page import="java.time.LocalDateTime"%>
+<%@ page import="java.time.LocalDateTime"%> 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
+        <meta charset="UTF-8" />
         <title>JSP1</title>
     </head>
     <body>
@@ -16,6 +16,20 @@
         </header>
         <nav>
             <h2>목차</h2>
+            <ul>
+                <li>
+                    <a href="ex1">첫번째 서블릿</a>
+                </li>
+                <li>
+                    <a href="ex2">두번째 서블릿</a> <!-- 요청 주소. localhost:8080/jsp1/(여기에 나오는 주소) -->
+                </li>
+                <li>
+                    <a href="ex3">포워드(Forward)</a>
+                </li>
+                <li>
+                    <a href="ex4">리다이렉트(Redirect)</a>
+                </li>                    
+            </ul>
         </nav>
         <main>
         </main>
