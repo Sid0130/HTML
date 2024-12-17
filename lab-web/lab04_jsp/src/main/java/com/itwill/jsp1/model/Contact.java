@@ -1,6 +1,10 @@
 package com.itwill.jsp1.model;
 
 public class Contact {
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	private Integer id;
 	private String name;
 	private String phone;
