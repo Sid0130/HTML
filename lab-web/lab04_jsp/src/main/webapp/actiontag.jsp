@@ -55,6 +55,7 @@
            빈 = 객체 . 빈을 이용하겠다라는 의미
          --%>
          
+         <%-- contact.setId();와 같은 기능 --%>
          <jsp:setProperty name="contact2" property="id" value="2" />
          <%-- contact2.setId(2); 와 같은 기능.
             name 속성: (useBean에서 설정한)자바 빈의 아이디.

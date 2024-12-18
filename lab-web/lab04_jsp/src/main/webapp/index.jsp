@@ -50,6 +50,15 @@
                 <li>
                     <a href="jstl.jsp">JSTL</a>
                 </li>
+                <li>
+                    <a href="mvc">MVC</a>
+                </li>    
+                <li>
+                    <a href="cookie">Cookie</a>                
+                </li>
+                <li>
+                    <a href="cookie2">Cookie2</a>
+                </li>
             </ul>
         </nav>
         <main>
