@@ -4,13 +4,9 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Cookie2</title>
+		<title>JSP2</title>
 	</head>
 	<body>
-		<%@ include file="../../header.jspf" %>
-        <main>
-        
-            <h1> Cookie2 굽기 </h1>
-        </main>
+		<h1>Home</h1>
 	</body>
 </html>
