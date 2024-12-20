@@ -7,6 +7,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Servlet implementation class HomeController
  */
@@ -14,6 +17,8 @@ import java.io.IOException;
 // urlPatterns이 빈 문자열("")인 경우, 컨텍스트 루트(context root)로 들어오는 요청을 처리.
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger log = LoggerFactory.getLogger(HomeController.class); 
+	//Slf4j의 로거를 import , HomeController의 클래스 객체를 get
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -26,6 +31,7 @@ public class HomeController extends HttpServlet {
     @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	System.out.println("HomeController::doGet()");
+    	log.debug("doGet()");
     	
     	request.getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request, response);
     }
