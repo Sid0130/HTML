@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
  */
 @WebServlet(name = "homeController", urlPatterns = { "" })
 // urlPatterns이 빈 문자열("")인 경우, 컨텍스트 루트(context root)로 들어오는 요청을 처리.
+//(컨텍스트 루트) http://localhost:8080/jsp2/
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Logger log = LoggerFactory.getLogger(HomeController.class); 
