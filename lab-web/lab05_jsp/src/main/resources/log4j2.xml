@@ -26,6 +26,7 @@
         
         </Console>
     </Appenders>
+    
     <Loggers>
         <!-- 로그를 출력/저장할 모듈(패키지), 로그 레벨 설정 -->
         <Root level="DEBUG" additivity="false">

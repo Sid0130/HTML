@@ -19,8 +19,10 @@
         <!-- 반응형  -->
         <div class="container-fluid">
             <c:set value="홈 페이지" var="pageTitle" />
+            
             <%-- pageContext.setAttribute("pageTitle", "홈 페이지"); --%>
-            <%@ include file="./fragments/header.jspf"%>           
+            <%@ include file="./fragments/header.jspf"%>         
+              
         </div>
         
         
