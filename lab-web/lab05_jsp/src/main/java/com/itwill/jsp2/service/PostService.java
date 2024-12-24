@@ -21,4 +21,24 @@ public enum PostService {
 		
 		return postDao.select();
 	}
+
+	public int create(Post post) {
+		log.info("create({})",post);
+		
+		// 영속성 계층의 메서드를 호출 -> DB insert 수행
+		int result = postDao.insert(post);
+		log.debug("insert result = {}", result);
+	
+		return result;
+	}
+	
+
+	public Post read(Integer id) {
+		log.debug("read(id={})",id);
+		
+		// 영속성 계층의 메서드를 호출해서 DB 테이블에서 select한 결과를 리턴
+		Post post = postDao.select(id);
+		
+		return post;
+	}
 }

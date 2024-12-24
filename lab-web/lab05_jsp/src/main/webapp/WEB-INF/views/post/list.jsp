@@ -4,26 +4,26 @@
 
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
+    <head>
+        <meta charset="UTF-8" />
+        
         <!-- Bootstrap을 사용하기 위한 meta name="viewport" 설정. -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>JSP2</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         
+        <title>JSP2</title>
         
-        <!-- Bootstrap CSS 링크. -->
+        <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
-        rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
-        crossorigin="anonymous">
-	</head>
-	<body>
-		<div class="container-fluid">
-            <c:set value="포스트 목록" var="pageTitle" /> 
-            <!-- 페이지 값은 원하는대로 var는 들어가는 곳의 변수 이름과 같아야함 -->
+            rel="stylesheet" 
+            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
+            crossorigin="anonymous" />
+    </head>
+    <body>
+        <div class="container-fluid">
+            <c:set value="포스트 목록" var="pageTitle" />
             <%@ include file="../fragments/header.jspf" %>
             
             <main>
-                <!-- 포스트 목록 테이블 작성 -->
                 <div class="mt-2 card">
                     <div class="card-header">
                         <h1>POSTS</h1>
@@ -42,7 +42,12 @@
                                 <c:forEach items="${ posts }" var="p">
                                     <tr>
                                         <td>${ p.id }</td>
-                                        <td>${ p.title }</td>
+                                        <c:url value="/post/details" var="postDetailsPage">
+                                            <c:param name="id" value="${ p.id }" />
+                                        </c:url>
+                                        <td>
+                                            <a href="${ postDetailsPage }">${ p.title }</a>
+                                        </td>
                                         <td>${ p.author }</td>
                                         <td>${ p.createdTime }</td>
                                     </tr>

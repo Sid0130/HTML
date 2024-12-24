@@ -26,6 +26,10 @@
                     <c:url value="/post/create" var="postCreatePage" />
                     <a class="nav-link" href="${postCreatePage}">새글</a>
                 </li>
+                <li>
+                    <c:url value="/post/tlist" var="postListTestPage"></c:url>
+                    <a class="nav-link" href="${postListTestPage}">테스트</a>
+                </li>
             </ul>
         </div>
     </div>

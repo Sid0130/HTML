@@ -17,45 +17,111 @@ import com.itwill.jsp2.datasourceutil.DataSourceUtil;
 import com.itwill.jsp2.domain.Post;
 import com.zaxxer.hikari.HikariDataSource;
 
-// 웹 MVC 아키텍쳐에서 영속성/저장소(persistence/repository layer) 계층을 담당하는 객체.
+// 웹 MVC 아키텍쳐에서 영속성/저장소 계층(persistence/repository layer)을 담당하는 객체.
 // DB CRUD(create/read/update/delete) 기능을 갖고 있는 싱글톤 객체.
 // DAO(Data Access Object).
 public enum PostDao {
-	INSTANCE; //싱글톤 객체
+	INSTANCE; // 싱글톤 객체
 	
 	private static final Logger log = LoggerFactory.getLogger(PostDao.class);
 	private final HikariDataSource ds = DataSourceUtil.INSTANCE.getDataSource();
 	
 	// 포스트 목록 검색에서 사용할 SQL
-	private static final String SQL_SELECT_ALL =
+	private static final String SQL_SELECT_ALL = 
 			"select * from posts order by id desc";
 	
 	public List<Post> select() {
-		// TODO: SQL_SELECT_ALL 실행해서 그 결과를 List<Post> 타입으로 리턴.
 		log.debug(SQL_SELECT_ALL);
+		
 		List<Post> list = new ArrayList<>();
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		
 		try {
 			conn = ds.getConnection();
 			stmt = conn.prepareStatement(SQL_SELECT_ALL);
 			rs = stmt.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				Post post = toPostFromResultSet(rs);
 				list.add(post);
 			}
+			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			// 사용했던 리소스 해제(커넥션 풀에 사용했던 컨텍션 반환.)
+			// 사용했던 리소스 해제(커넥션 풀에 사용했던 커넥션 반환).
 			close(conn, stmt, rs);
 		}
+
 		return list;
 	}
 
+	// 포스트 저장(새 글 작성)에서 필요한 SQL 문장을 선언.
+	private static final String SQL_INSERT = 
+			"insert into posts (title, content, author, created_time, modified_time) "
+			+ "values (?, ?, ?, systimestamp, systimestamp)";
+	
+	public int insert(Post post) {
+		log.debug("insert(post={})", post);
+		log.debug(SQL_INSERT);
+		
+		int result = 0; // insert 문장의 실행 결과를 저장하기 위한 지역 변수.
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		try {
+			// 데이터 소스(커넥션 풀)에서 커넥션을 빌려옴.
+			conn = ds.getConnection();
+			stmt = conn.prepareStatement(SQL_INSERT);
+			stmt.setString(1, post.getTitle());
+			stmt.setString(2, post.getContent());
+			stmt.setString(3, post.getAuthor());
+			result = stmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// 사용했던 커넥션을 커넥션 풀에 반환.
+			close(conn, stmt);
+		}
+		
+		return result;
+	}
+	
+	// 아이디(PK)로 포스트 1개를 검색하는 SQL.
+	private static final String SQL_SELECT_BY_ID = 
+			"select * from posts where id = ?";
+	
+	public Post select(Integer id) {
+		log.debug("select(id={})", id);
+		log.debug(SQL_SELECT_BY_ID);
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		Post post = null;
+		
+		try {
+			conn = ds.getConnection(); // 커넥션 풀에서 커넥션을 빌려옴.
+			stmt = conn.prepareStatement(SQL_SELECT_BY_ID);
+			
+			stmt.setInt(1, id);
+			
+			rs = stmt.executeQuery();
+			
+			if(rs.next()) { // ResultSet에 레코드가 있으면
+				post = toPostFromResultSet(rs);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(conn, stmt, rs); // 사용했던 커넥션 객체를 커넥션 풀에 반환.
+		}
+
+		return post;
+	}
+	
+	
 	private Post toPostFromResultSet(ResultSet rs) throws SQLException {
 		Integer id = rs.getInt("ID");
 		String title = rs.getString("TITLE");
@@ -65,8 +131,10 @@ public enum PostDao {
 		Timestamp modifiedTime = rs.getTimestamp("MODIFIED_TIME");
 		
 		Post post = Post.bulider()
-			.id(id).title(title).content(content).author(author).createdTime(createdTime)
-			.modifiedTime(modifiedTime).build();
+				.id(id).title(title).content(content).author(author)
+				.createdTime(createdTime).modifiedTime(modifiedTime)
+				.build();
+		
 		return post;
 	}
 }

@@ -20,30 +20,32 @@ import com.itwill.jsp2.service.PostService;
 @WebServlet(name = "postListController", urlPatterns = { "/post/list" })
 public class PostListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private static final Logger log = LoggerFactory.getLogger(PostListController.class);
-    private final PostService postService = PostService.INSTANCE;
-    
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public PostListController() {}
+	private static final Logger log = LoggerFactory.getLogger(PostListController.class);
+	private final PostService postService = PostService.INSTANCE;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-    @Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+	public PostListController() {
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-    	log.debug("doGet()");
-    	
-    	// 서비스 계층의 메서드를 호출해서 뷰(테이블)를 그릴 수 있는 데이터를 읽어옴.
-    	List<Post> list = postService.read();
-    	log.debug("# of list = {}", list.size());
-    	
-    	// 데이터를 뷰에 전달하기 위해서, 요청 객체에 attribute를 추가.
-    	request.setAttribute("posts", list);
-    	
-    	// 뷰로 이동(forward).
+		log.debug("doGet()");
+
+		// 서비스 계층의 메서드를 호출해서 뷰(테이블)를 그릴 수 있는 데이터를 읽어옴.
+		List<Post> list = postService.read();
+		log.debug("# of list = {}", list.size());
+
+		// 데이터를 뷰에 전달하기 위해서, 요청 객체에 attribute를 추가.
+		request.setAttribute("posts", list);
+
+		// 뷰로 이동(forward).
 		request.getRequestDispatcher("/WEB-INF/views/post/list.jsp").forward(request, response);
 	}
 
