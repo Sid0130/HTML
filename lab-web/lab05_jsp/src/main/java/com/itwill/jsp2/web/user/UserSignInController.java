@@ -74,6 +74,8 @@ public class UserSignInController extends HttpServlet {
     	} else {
     		// username과 password가 일치하는 사용자가 없는 경우 -> 로그인 실패
     		// 다시 로그인 페이지로 이동(redirect).
+    		// 로그인 실패 했을경우 리퀘스트 파라미터가 없기에 붙혀서 작성해줘야 로그인 실패한 페이지의 
+    		// 리퀘스트 파라미터를 남기게 하기 위해서. 
     		String url = request.getContextPath() + "/user/signin?result=f&target=" 
     				+ URLEncoder.encode(target, "UTF-8"); // 리퀘스트 파라미터를 붙혀서 
     		log.debug("로그인 실패: redirect to {}", url);

@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 
 import com.itwill.jsp2.datasourceutil.DataSourceUtil;
 import com.itwill.jsp2.domain.Member;
+import com.itwill.jsp2.domain.Post;
 import com.zaxxer.hikari.HikariDataSource;
 
 public enum MemberDao {
@@ -84,6 +85,37 @@ public enum MemberDao {
 		
 		return member;
 	}
+	
+	// members 테이블의 points 컬럼을 업데이트하는 SQL, 메서드
+	// 서비스는 포스트서비스에서 포스트 크리에이트에서 두개이상의 다오를 사용하면
+	// 포인터와 유저네임 아규먼트를 받고 얼마를 추가를 해줄건지 포인트를 아규먼트를 받을건지
+	private static final String SQL_UPDATE_POINTS = 
+			"update members set points = points + ?, modified_time = systimestamp "
+			+ "where username = ?";
+	
+	public int update(Integer points, String username) {
+		log.debug("update(points={}, username={})", points, username);
+		log.debug(SQL_UPDATE_POINTS);
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		int result = 0;
+		
+		try {
+			conn = ds.getConnection();
+			stmt = conn.prepareStatement(SQL_UPDATE_POINTS);
+			stmt.setInt(1, points);
+			stmt.setString(2, username);
+			
+			result = stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(conn, stmt);
+		}
+		return result;
+	}
+	
 	
 	private Member toMemberFromResultSet(ResultSet rs) throws SQLException {
 		Integer id = rs.getInt("id");

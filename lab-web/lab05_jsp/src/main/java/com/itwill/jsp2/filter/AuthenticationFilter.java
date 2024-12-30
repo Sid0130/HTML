@@ -72,7 +72,7 @@ public class AuthenticationFilter extends HttpFilter {
 		String target = null;
 		if(qs != null) { // 질의 문자열이 있는 경우
 			target = URLEncoder.encode(reqUrl + "?" + qs, "UTF-8"); // java.net 클래스
-			// Url에 구분하는 애들은 encodeing 해서 변환 해줘야한다
+			// Url에 구분하는 애들은 encode 해서 변환 해줘야한다
 		} else { // 질의 문자열이 없는 경우
 			target = URLEncoder.encode(reqUrl, "UTF-8");
 			
@@ -96,7 +96,7 @@ public class AuthenticationFilter extends HttpFilter {
 			// 서블릿을 거치지않고 응답을 보내는게 redirect. 그래서 doFilter를 다시 요청할 경우 서버 에러.
 			
 			// 주소하고 쿼리스트링 구분하는게 물음표고 
-			// 리퀘스트 파라미터 값 안에도 물음ㅍ가 있으니 용도가 달라서 encode해서 변환
+			// 리퀘스트 파라미터 값 안에도 물음표가 있으니 컨택스트 패스와 용도가 달라서 encode해서 변환
 			// 인코딩을 해줘야 url에 필요할 /, ? 아니면 리퀘스트 값을 뿐인지 구분하기 위해 반드시 
 			// URLEncoder 를 써줘야함
 		}
