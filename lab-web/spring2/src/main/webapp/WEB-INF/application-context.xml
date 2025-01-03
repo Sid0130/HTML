@@ -28,7 +28,36 @@
     -->
     <bean id="ds" class="com.zaxxer.hikari.HikariDataSource"> <!-- 아이디는 변수이름 -->
         <constructor-arg ref="hikariConfig" /> <!-- ref가 위쪽에 있는 bean을 참조하기 위해 id를 적어줌 -->
-        
     </bean>
+    
+    <!-- SqlSessionFactoryBean 빈 생성을 위한 설정 
+        영속성 프레임워크인 MyBatis 데이터 소스(커넥션 풀)을 이용해서 SQL 문장을 실행하고, 
+        그 결과를 처리해서 리턴할 수 있는 객체.
+        SqlSessionFactoryBean sqlSession = new SqlSessionFactoryBean();
+        sqlSession.setDataSource(ds);
+        sqlSession.setMapperLocations("classpath:/mappers/**/*.xml");
+        sqlSession.setConfigLocation("classpath:/mybatis-config.xml")
+    -->
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean"> <!-- 생성자 호출 -->
+         <!-- ref 다른 bean의 id를 찾아가는것 -->
+        <property name="dataSource" ref="ds"/> <!-- name은 위의 클래스 필드의 이름 이라서 틀리면 안됨 -->
+        
+        <!-- value는 값 자체를 아규먼트로 주는것 -->
+        <property name="mapperLocations" value="classpath*:mappers/**/*.xml"/>
+        <!-- src -> 
+                main -> 
+                    resources 
+                        mapper
+                            하위는 몇개든 상관없고 그 밑에 xml 확장자 파일이 있으면 된다.
+                            -->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/> 
+    </bean>
+    
+    <!-- MyBatis-Spring 프레임워크에서 SQL을 수행하고 결과처리하는 컴포넌트들을 
+        검색할 기본 패키지 설정. 
+     MyBatis 프레임워크는 base-package 아래의 인터페이스(들)을 검색해서 구현 객체를 생성.
+     -->
+    
+    <mybatis:scan base-package="com.itwill.spring2.repository"/>
 
 </beans>

@@ -7,7 +7,10 @@
 		<meta charset="UTF-8">
         <!-- Bootstrap을 사용하기 위한 meta name="viewport" 설정. -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>JSP2</title>
+		<title>blog_jsp</title>
+        <style>
+            
+        </style>
         
         
         <!-- Bootstrap CSS 링크. -->
@@ -23,24 +26,55 @@
         </div>
 
     <div class="text-left">
-        <h2 class="ms-5"> 메뉴 </h2>
         <div class="row">
+            <h2 class="ms-5"> 최근 목록 </h2>
             <div class="col-4">
                 <ul class="m-20 fs-5"  style="list-style:none;">
-                    <li >
+                    <li class="mt-3">
                         <a>테스트</a>
                     </li>            
-                    <li>
+                    <li class="mt-3">
                         <a>테스트</a>
                     </li>            
                 </ul>
             </div>
-            <div class="col-8">2 of 2</div>
+<!--             <div class="col-8">2 of 2 -->
+<!--                 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel"> -->
+<!--                   Carousel 내부 컨텐츠 -->
+<!--                   <div class="carousel-inner"> -->
+<!--                     첫 번째 슬라이드 -->
+<!--                     <div class="carousel-item active" data-bs-interval="10000"> -->
+<!--                       <img src="./static/image/landscape01.jpg" class="d-block w-100 " alt="First slide"> -->
+<!--                     </div> -->
+<!--                     두 번째 슬라이드 -->
+<!--                     <div class="carousel-item" data-bs-interval="2000"> -->
+<!--                       <img src="./static/image/trees01.jpg" class="d-block w-100" alt="Second slide"> -->
+<!--                     </div> -->
+<!--                     세 번째 슬라이드 -->
+<!--                     <div class="carousel-item"> -->
+<!--                       <img src="./static/image/waves_gentl01.jpg" class="d-block w-100" alt="Third slide"> -->
+<!--                     </div> -->
+<!--                   </div> -->
+                
+<!--                   이전 슬라이드 버튼 -->
+<!--                   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev"> -->
+<!--                     <span class="carousel-control-prev-icon" aria-hidden="true"></span> -->
+<!--                     <span class="visually-hidden">Previous</span> -->
+<!--                   </button> -->
+                
+<!--                   다음 슬라이드 버튼 -->
+<!--                   <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next"> -->
+<!--                     <span class="carousel-control-next-icon" aria-hidden="true"></span> -->
+<!--                     <span class="visually-hidden">Next</span> -->
+<!--                   </button> -->
+<!--                 </div> -->
+<!--             </div> -->
+            
         </div>
-        <div class="row">
-            <div class="col">2 of 3</div>
-            <div class="col">3 of 3</div>
-        </div>
+<!--         <div class="row"> -->
+<!--             <div class="col">2 of 3</div> -->
+<!--             <div class="col">3 of 3</div> -->
+<!--         </div> -->
     </div>
 
 

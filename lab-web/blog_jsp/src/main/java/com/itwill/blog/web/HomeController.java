@@ -1,4 +1,4 @@
-package com.itwill.jsp2.web;
+package com.itwill.blog.web;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

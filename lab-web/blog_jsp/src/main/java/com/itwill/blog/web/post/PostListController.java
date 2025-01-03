@@ -1,11 +1,19 @@
-package com.itwill.jsp2.web.post;
+package com.itwill.blog.web.post;
+
+import java.io.IOException;
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.itwill.blog.domain.Post;
+import com.itwill.blog.service.PostService;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 /**
  * Servlet implementation class PostListController
@@ -13,6 +21,8 @@ import java.io.IOException;
 @WebServlet(name = "postListController", urlPatterns = { "/post/list" })
 public class PostListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger log = LoggerFactory.getLogger(PostListController.class);
+	private final PostService postService = PostService.INSTANCE;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -26,6 +36,11 @@ public class PostListController extends HttpServlet {
     @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
+    	
+    	List<Post> post = postService.read();
+    	
+    	request.setAttribute("posts", post);
+    	
     	request.getRequestDispatcher("/WEB-INF/views/post/list.jsp").forward(request, response);
 	}
 
