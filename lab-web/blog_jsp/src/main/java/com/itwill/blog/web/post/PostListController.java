@@ -21,15 +21,19 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet(name = "postListController", urlPatterns = { "/post/list" })
 public class PostListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	// 디버그 로그 출력을 위한 객체 생성.
 	private static final Logger log = LoggerFactory.getLogger(PostListController.class);
+	
+	// 게시물 목록 데이터를 처리하는 비지니스 로직 서비스 객체 (싱글톤 패턴)
 	private final PostService postService = PostService.INSTANCE;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PostListController() {
+    public PostListController() { // 기본 생성자
     }
-
+    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -37,10 +41,16 @@ public class PostListController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
     	
-    	List<Post> post = postService.read();
+    	// 디버그 로그: doGet 메서드 호출 확인
+    	log.debug("doGet()"); 
     	
-    	request.setAttribute("posts", post);
+    	// 게시물 목록 데이터를 조회
+    	List<Post> post = postService.read(); 
     	
+    	// 조회된 게시물 목록을 요청 속성에 추가
+    	request.setAttribute("posts", post); 
+    	
+    	// 서버에서 list.jsp로 요청 전달
     	request.getRequestDispatcher("/WEB-INF/views/post/list.jsp").forward(request, response);
 	}
 

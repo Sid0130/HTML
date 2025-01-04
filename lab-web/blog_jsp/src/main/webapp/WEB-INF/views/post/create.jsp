@@ -22,18 +22,37 @@
         </div>
         
         <main>
-            <div>
-                <div class="">
-                    <div class="mt-3">
-                        <input type="text" class="form-control" />
+            <div class="container-fluid">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>새 글 작성</h2>
                     </div>
-                    <div class="mt-3">
-                        <input type="text" class="form-control" />
+                    <div class="card-body">
+                        <c:url value="/post/create" var="postCreatePage"/>
+                        <form action="${postCreatePage}" method="post">
+                            <div class="mt-3">
+                                <input type="text" class="form-control" 
+                                        name="title" placeholder="제목" required autofocus/>
+                            </div>
+                            <div class="mt-2">
+                                <textarea rows="5" class="form-control"
+                                    name="content" placeholder="내용" required></textarea>
+                            </div>
+                            <div class="mt-3">
+                                <input type="text" class="form-control" 
+                                        name="author" placeholder="작성자" required/>
+                            </div>
+                            <div class="mt-2 d-flex justify-content-end">
+                                <input type="submit" value="취소" 
+                                        class="btn btn-outline-danger me-2" />
+                                <input type="submit" value="저장"
+                                        class="btn btn-outline-success" />
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </main>
-        
         
         <!-- Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 

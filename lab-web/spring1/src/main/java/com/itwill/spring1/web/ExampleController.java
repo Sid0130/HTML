@@ -25,6 +25,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 //-> private static final Logger log = LoggerFactory.getLogger(ExampleController.class);
 // 코드를 애너테이션으로 처리.
+
+
 @Controller
 //-> 클래스가 컨트롤러 컴포넌트임을 설정하는 애너테이션.
 // servlet-context.xml 파일에서 <context:component-scan ... /> 태그에서 설정된 패키지와 

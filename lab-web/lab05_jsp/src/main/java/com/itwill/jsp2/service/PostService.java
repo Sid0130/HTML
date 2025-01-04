@@ -71,7 +71,6 @@ public enum PostService {
 		log.debug("read(category={}, keyword={})", category,keyword);
 		return postDao.select(category, keyword);
 		
-		
 	}
 }
 

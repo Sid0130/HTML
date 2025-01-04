@@ -17,15 +17,12 @@
 	</head>
 	<body>
         <div>
-            <c:set value="목록 페이지" var="pageTitle"/>
             <%@ include file="../fragments/header.jspf" %>
         </div>
 		
         <main>
             <div>
                 <div class="card-header">
-                
-                
                     <div class="container-fluid">
                         <table class="table table-hover">
                             <thead class="text-center">
@@ -40,7 +37,10 @@
                                 <c:forEach items="${posts}" var="p">
                                     <tr>
                                         <td>${p.id}</td>
-                                        <td>${p.title}</td>
+                                        <c:url value="/post/details" var="postdetailsPage"/>
+                                        <td>
+                                            <a href="${postCreatePage}">${p.title}</a>
+                                        </td>
                                         <td>${p.author}</td>
                                         <td>${p.modifiedTime}</td>
                                     </tr>
