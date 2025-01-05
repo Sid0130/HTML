@@ -7,7 +7,7 @@
 		<meta charset="UTF-8">
         <!-- Bootstrap을 사용하기 위한 meta name="viewport" 설정. -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>blog_jsp</title>
+		<title>Blog_Jsp</title>
         
         
         <!-- Bootstrap CSS 링크. -->
@@ -37,9 +37,11 @@
                                 <c:forEach items="${posts}" var="p">
                                     <tr>
                                         <td>${p.id}</td>
-                                        <c:url value="/post/details" var="postdetailsPage"/>
+                                        <c:url value="/post/details" var="postDetailsPage">
+                                            <c:param name="id" value="${p.id}" />
+                                        </c:url>
                                         <td>
-                                            <a href="${postCreatePage}">${p.title}</a>
+                                            <a href="${postDetailsPage}">${p.title}</a>
                                         </td>
                                         <td>${p.author}</td>
                                         <td>${p.modifiedTime}</td>

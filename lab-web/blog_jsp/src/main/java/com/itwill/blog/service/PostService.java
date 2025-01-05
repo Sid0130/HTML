@@ -33,5 +33,15 @@ public enum PostService {
 		
 		return result;
 	} 
+	
+	// 데이터베이스에서 게시물을 조회
+	public Post read(Integer id) {
+		log.debug("read(id= {})", id); // 조회한 아이디를 로그 확인
+		
+		// 데이터 베이스에 조회한 id 데이터를 post 객체에 할당 
+		Post post = postDao.select(id); 
+		
+		return post;
+	}
 
 }
