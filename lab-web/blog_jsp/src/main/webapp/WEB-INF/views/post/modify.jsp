@@ -29,46 +29,35 @@
                         </div>
                     </div>
                     <div class="card-body">
-                       <form>
-                            <div class="mt-2">
+                       <form id="modifyForm">
+                            <div class="mt-2 d-none">
                                 <label class="form-label" for="id">번호</label>
-                                <input class="form-control" id="id" name="id"
-                                    type="text" value="${ post.id }" readonly/> <!-- 읽기만 가능한 -->
+                                <input class="form-control" id="id" name="id" 
+                                        type="text" value="${ post.id }" readonly/> <!-- 읽기만 가능한 -->
                             </div>
                             <div class="mt-2">
                                 <label class="form-label" for="title">제목</label>
                                 <input class="form-control" id="title" name="title" 
-                                    type="text" value="${ post.title }" readonly/> <!-- 읽기만 가능한 -->
+                                        type="text" value="${ post.title }" required/>
                             </div>                     
                             <div class="mt-2">
                                 <label class="form-label" for="content">내용</label>
-                                <textarea class="form-control" rows="5" id="content" name="content"
-                                     readonly >${ post.content }</textarea>
+                                <textarea class="form-control" rows="5" id="content" name="content" 
+                                        required >${ post.content }</textarea>
                                 <!-- input은 values에 값을 넣지만 textarea는 사이에 넣어주면됨 -->
                             </div> 
-                            <div class="mt-2">
+                            <div class="mt-2 d-none">
                                 <label class="form-label" for="author">작성자</label>
                                 <input class="form-control" id="author" name="author" 
-                                    type="text" value="${ post.author }" readonly/>
+                                        type="text" value="${ post.author }" readonly/>
                             </div>    
-                            <div class="mt-2">
-                                <label class="form-label" for="createdTime">작성시간</label>
-                                <input class="form-control" id="createdTime" name="createdTime" 
-                                    type="text" value="${ post.createdTime }" readonly/>
-                            </div>     
-                            <div class="mt-2">
-                                <label class="form-label" for="modifiedTime">최종수정시간</label>
-                                <input class="form-control" id="modifiedTime" name="modifiedTime" 
-                                    type="text" value="${ post.modifiedTime }" readonly/>
-                            </div>   
                         </form>  
                     </div>
+                    
                     <div class="card-footer">
                         <div class="d-flex justify-content-center">
-                            <c:url value="/post/modify" var="postModifyPage">
-                                <c:param name="id" value="${post.id}" />
-                            </c:url>
-                            <a class="btn btn-outline-success" href="${postModifyPage}">수정하기</a>
+                            <button class="btn btn-outline-success me-2" id="btnUpdate">업데이트</button>
+                            <button class="btn btn-outline-danger me-2" id="btnDelete">삭제</button>
                         </div>
                     </div>
                 </div>
@@ -80,5 +69,8 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
             crossorigin="anonymous"></script>
+        
+        <c:url value="/static/js/post_modify.js" var="postModifyJS" />   
+        <script src="${postModifyJS}"></script> 
 	</body>
 </html>

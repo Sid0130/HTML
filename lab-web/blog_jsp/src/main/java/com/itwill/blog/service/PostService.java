@@ -43,5 +43,27 @@ public enum PostService {
 		
 		return post;
 	}
-
+	
+	// 데이터베이스에 게시물을 수정 
+	public int update(Post post) {
+		// 업데이트한 결과를 로그에 출력
+		log.debug("update(post={})",post);
+		
+		// 데이터베이스에 업데이트된 게시물 호출.
+		int result = postDao.update(post);
+		log.debug("{}개 행이 업데이트됨", result);
+		
+		return result;
+	}
+	
+	public int delete(Integer id) {
+		
+		// 데이터베이스에 삭제한 게시물 호출
+		int result = postDao.delete(id);
+		log.debug("{}개 행이 삭제됨", result);
+		
+		
+		return result;
+	}
+	
 }

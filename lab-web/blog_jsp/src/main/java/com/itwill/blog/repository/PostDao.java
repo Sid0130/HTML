@@ -136,6 +136,70 @@ public enum PostDao {
 		
 	}
 	
+	// 게시물 데이터를 업데이트 하는 SQL_UPDATE 쿼리문
+	private static final String SQL_UPDATE =
+			"update posts "
+			+ "set title = ?, content = ?, modified_time = systimestamp "
+			+ "where id = ?";
+	
+	public int update(Post post) {
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		int result = 0;
+		
+		try {
+			conn = ds.getConnection();
+			stmt = conn.prepareStatement(SQL_UPDATE);
+			
+			//게시물 데이터를 SQL 쿼리 파라미터에 바인딩
+			stmt.setString(1, post.getTitle());
+			stmt.setString(2, post.getContent());
+			stmt.setInt(3, post.getId());
+			
+			// 바인된 값을 업데이트
+			result = stmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally { 
+			close(conn, stmt); //리소스 해제
+		}
+		return result;
+	}
+	
+	// 게시물 데이터를 삭제하는 SQL_DELETE_BY_ID 쿼리문
+	private static final String SQL_DELETE_BY_ID =
+			"delete from posts where id = ?";
+	
+	
+	public int delete(Integer id) {
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		int result = 0;
+		
+		try {
+			conn = ds.getConnection();
+			
+			// 게시물 삭제를 위한 SQL_DELETE_BY_ID 쿼리
+			stmt = conn.prepareStatement(SQL_DELETE_BY_ID);
+			// 게시물 삭제 아이디를 바인딩
+			stmt.setInt(1, id);
+			
+			// 삭제 성공 여부 확인
+			result = stmt.executeUpdate();
+			log.debug("결과 = {}",result);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(conn, stmt);
+		}
+		
+		return result;
+	}
+			
 	private Post toPostFromResultSet(ResultSet rs) throws SQLException {
 		Integer id = rs.getInt("ID");									// 게시물 ID
 		String title = rs.getString("TITLE");							// 게시물 제목
