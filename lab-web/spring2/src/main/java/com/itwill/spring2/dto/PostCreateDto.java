@@ -19,7 +19,8 @@ public class PostCreateDto {
 		return Post.builder().title(title).content(content).author(author).build();
 	}
 }
-	
+// 폼양식 새글, 수정..?
+
 // 메서드를 호출하면서 아규먼트를 전달하고
 // 서비스는 컨트롤러에 리턴값으로 객체를 전달
 // 서비스가 다오에 메서드의 아규먼트로 전달 

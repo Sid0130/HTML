@@ -8,7 +8,7 @@
 		<meta charset="UTF-8">
         <!-- Bootstrap을 사용하기 위한 meta name="viewport" 설정. -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>JSP2</title>
+		<title>로그인</title>
         
         
         <!-- Bootstrap CSS 링크. -->
@@ -19,6 +19,32 @@
 	<body>
         <div>
             <%@ include file="../fragments/header.jspf" %>
+            
+            <main class="mt-2 container-fluid">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="post">
+                            <div class="mt-2">
+                                <input class="form-control" type="text" 
+                                    name="username" placeholder="아이디" required autofocus />
+                            </div>
+                            <div class="mt-2">
+                                <input class="form-control" type="password"
+                                    name="password" placeholder="비밀번호" required />
+                            </div>
+                            <div class="mt-2">
+                                <input class="form-control btn btn-outline-primary" 
+                                    type="submit" value="로그인"/>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <ul>
+                    <li>
+                        <a href="/user/signup">회원가입</a>
+                    </li>
+                </ul>
+            </main>
         </div>
         
 		
