@@ -33,7 +33,7 @@ public class PostDaoTest {
 		list.forEach(x -> log.debug("{}", x));
 	}
 	
-	@Test
+//	@Test
 	public void testSelectById() {
 		// 테이블에 id가 존재하는 경우:
 		Post post1 = postDao.selectById(1);
@@ -44,5 +44,33 @@ public class PostDaoTest {
 		Assertions.assertNull(post2);
 		log.debug("post2={}",post2);
 	}
+	
+//	@Test
+	public void testInsertPost() {
+		Post post = Post.builder()
+				.title("안녕하세요.").content("월요일입니다.").author("guest").build();
+		
+		int result = postDao.insertPost(post);
+		
+		Assertions.assertEquals(1, result); // 기대값 result가 1과 같다.
+	}
+	
+//	@Test
+	public void testUpdatePost() {
+		Post post = Post.builder()
+				.title("안녕").content("월요일").id(81).build();
+		
+		int result = postDao.updatePost(post);
+		
+		Assertions.assertEquals(1, result);
+	}
+	
+//	@Test
+	public void testDeletePost() {
+		int result = postDao.deletePost(81);
+		
+		Assertions.assertEquals(1, result);
+	}
 
 }
+

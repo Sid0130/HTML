@@ -16,4 +16,5 @@
     <typeAliases>
         <typeAlias type="com.itwill.spring2.domain.Post" alias="Post"/>
     </typeAliases>
+    
 </configuration>
