@@ -47,17 +47,17 @@ public class AuthenticationFilter extends HttpFilter {
 		
 		// 컨택스트 패스 확인
 		String reqUrl = req.getRequestURL().toString(); // 스트링타입 버퍼로 toString으로 변환
-		log.debug("request URL = {}",reqUrl);
+		log.debug("request URL = {}",reqUrl); // URL 패스 경로
 		
-		String reqUri = req.getRequestURI();
-		log.debug("request URL = {}",reqUri);
+		
+		String reqUri = req.getRequestURI(); 
+		log.debug("request URI = {}",reqUri); // URI 패스 경로
 		
 		String contextPath = req.getContextPath();
-		log.debug("request ContextPath = {}",contextPath);
+		log.debug("request ContextPath = {}",contextPath); // ContextPath 패스 경로
 		
-		String qs = req.getQueryString();
+		String qs = req.getQueryString(); // QueryString 패스 경로
 		log.debug("request QueryString = {}",qs);
-		
 		
 		chain.doFilter(request, response);
 	}
@@ -66,7 +66,6 @@ public class AuthenticationFilter extends HttpFilter {
 	 * @see Filter#init(FilterConfig)
 	 */
 	public void init(FilterConfig fConfig) throws ServletException {
-		// TODO Auto-generated method stub
 	}
 
 }
