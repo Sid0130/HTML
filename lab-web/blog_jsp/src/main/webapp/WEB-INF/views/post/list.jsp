@@ -20,10 +20,12 @@
             <%@ include file="../fragments/header.jspf" %>
         </div>
 		
-        <main>
-            <div>
+        <main class="mt-2 container-fluid">
+            <div class="card">
                 <div class="card-header">
-                    <div class="container-fluid">
+                    <h2>게시판</h2>
+                </div>
+                    <div class="mt-2">
                         <table class="table table-hover">
                             <thead class="text-center">
                                 <tr>
@@ -50,8 +52,6 @@
                             </tbody>
                         </table>
                     </div>
-                    
-                </div>
             </div>
         </main>
         

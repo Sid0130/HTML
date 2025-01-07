@@ -18,7 +18,7 @@ public class Post {
 	private String title;
 	private String content;
 	private String author;
-	private LocalDateTime createTime; // created_time 컬럼
+	private LocalDateTime createdTime; // created_time 컬럼
 	private LocalDateTime modifiedTime; // modified_time
 
 }

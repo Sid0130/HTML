@@ -53,13 +53,13 @@ public class PostServiceTest {
 //	}
 	
 //	@Test
-	public void testUpdate() {
-		Post post = Post.builder()
-				.title("나나나").content("라라라").id(82).build();
-		
-		int result = postService.update(post);
-		Assertions.assertEquals(1, result);
-	}
+//	public void testUpdate() {
+//		Post post = Post.builder()
+//				.title("나나나").content("라라라").id(82).build();
+//		
+//		int result = postService.update(post);
+//		Assertions.assertEquals(1, result);
+//	}
 	
 //	@Test
 	public void testDelete() {

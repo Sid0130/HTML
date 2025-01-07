@@ -9,7 +9,7 @@
 		<!-- Bootstrap을 사용하기 위한 meta name="viewport" 설정. -->
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         
-		<title>Blog_Jsp</title>
+		<title>Blog_Jsp : 게시글 정보</title>
 		
 		<!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
@@ -25,7 +25,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div>
-                            <h2>글 수정</h2>
+                            <h2>게시글 정보</h2>
                         </div>
                     </div>
                     <div class="card-body">

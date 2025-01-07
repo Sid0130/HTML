@@ -17,10 +17,10 @@ public enum MemberService {
 	private static final Logger log = LoggerFactory.getLogger(MemberDao.class);
 	
 	// 로그인 서비스
-	public Member signin(String username, String password) {
+	public Member signIn(String username, String password) {
 		
 		Member member = memberDao.select(username, password);
-		
+		log.debug("signIn result={}", member);
 		return member;
 	}
 

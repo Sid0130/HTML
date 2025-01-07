@@ -53,13 +53,13 @@ public class UserSignInController extends HttpServlet {
     	String target = request.getParameter("target");
     	log.debug("doPost(username={}, password={}, terget={})",username,password,target);
     	
-    	// 서베스 계층의 메서드를 호출해서 로그인 성공/실패 여부를 판단.
+    	// 서비스 계층의 메서드를 호출해서 로그인 성공/실패 여부를 판단.
     	Member member = memberService.signIn(username, password);
     	if(member != null) {
     		// username과 password가 일치하는 사용자가 있는 경우 -> 로그인 성공
     		// 세션에 로그인 정보를 저장 -> 포스트 목록 페이지로 이동(redirect)
     		HttpSession session = request.getSession();
-    		session.setAttribute("signedInUser", member.getUsername());
+    		session.setAttribute("signInUser", member.getUsername());
     		
     		// target 페이지로 이동(redirect)
     		if (target != null && !target.equals("")) { // 로그인 정보가 있는 경우

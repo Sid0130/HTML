@@ -1,6 +1,7 @@
 package com.itwill.blog.web.user;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,14 +56,14 @@ public class UserSignInController extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String target = request.getParameter("target");
-		Member member = memberService.signin(username, password);
+		Member member = memberService.signIn(username, password);
 		
 		// 로그인 상태 유지
 		if(member != null) {
 			//세션에 로그인 정보를 유지
 			HttpSession session = request.getSession();
 			// 로그인된 사용자 이름을 세션 속성에 추가
-			session.setAttribute("signInUser", member.getUsername());
+			session.setAttribute("signedInUser", member.getUsername());
 			
 			// target 페이지로 이동(redirect)
     		if (target != null && !target.equals("")) { // 로그인 정보가 있는 경우
@@ -75,18 +76,13 @@ public class UserSignInController extends HttpServlet {
 			
 		// 로그인 실패했을 경우
 		} else { 
-			
-			
+			// 실패한 페이지의 리퀘스트 파라미터를 남김
+			String url = request.getContextPath() + "/user/signin?result=f&target="
+					+ URLEncoder.encode(target, "UTF-8");
+					
+			log.debug("로그인 실패: redirect to {}", url);
+     		response.sendRedirect(url);
 		}
-		
-		if(member == null) {
-			
-		}
-		
-		log.debug("member = {}",member);
-		
-		String url = request.getContextPath() + "/";
-		response.sendRedirect(url);
 	}
 
 }

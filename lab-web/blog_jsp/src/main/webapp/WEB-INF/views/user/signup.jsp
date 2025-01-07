@@ -1,14 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-    
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
         <!-- Bootstrap을 사용하기 위한 meta name="viewport" 설정. -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Blog_jsp : 로그인</title>
+		<title>Blog_jsp : 회원가입</title>
         
         
         <!-- Bootstrap CSS 링크. -->
@@ -22,38 +21,28 @@
             
             <main class="mt-2 container-fluid">
                 <div class="card">
+                    <div class="card-header">
+                        <h2>회원가입</h2>
+                    </div>
                     <div class="card-body">
-                        <form method="post">
+                        <form>
                             <div class="mt-2">
-                                <input class="form-control" type="text" 
-                                    name="username" placeholder="아이디" required autofocus />
+                                <label class="form-label" for="username">아이디</label>
+                                <input class="form-control" id="username" type="text" >
                             </div>
                             <div class="mt-2">
-                                <input class="form-control" type="password"
-                                    name="password" placeholder="비밀번호" required />
+                                <label class="form-label" for="password">비밀번호</label>
+                                <input class="form-control" id="password" type="password" >
                             </div>
-                            <div class="d-none">
-                                <input name="target" value= "${param.target}" readonly/>
+                            <div class="mt-2">
+                                <label class="form-label" for="email">이메일</label>
+                                <input class="form-control" id="email" type="email" >
                             </div>
-                            
-                            <c:if test="${not empty param.result && param.result eq 'f'}">
-                                <div class="text-danger mt-2">아이디와 패스워드를 확인하세요.</div>
-                            </c:if>
-                                <div class="mt-2">
-                                    <input class="form-control btn btn-outline-primary" 
-                                        type="submit" value="로그인"/>
-                               </div>
                         </form>
                     </div>
                 </div>
-                <ul>
-                    <li>
-                        <a href="/user/signup">회원가입</a>
-                    </li>
-                </ul>
             </main>
         </div>
-        
 		
         
         <!-- Bootstrap JS -->

@@ -26,7 +26,10 @@ public enum MemberDao {
 	private static final String SQL_SELECT_BY_USERNAME_AND_PASSWORD =
 			"select * from members where username = ? and password = ?";
 	
-	public Member select(String username, String passwrod) {
+		public Member select(String username, String password) {
+			
+		log.debug(SQL_SELECT_BY_USERNAME_AND_PASSWORD);
+		log.debug("select(username = {}, password={})", username, password);
 		
 		Member member = null;
 		Connection conn = null;
@@ -37,7 +40,7 @@ public enum MemberDao {
 			conn = ds.getConnection();
 			stmt = conn.prepareStatement(SQL_SELECT_BY_USERNAME_AND_PASSWORD);
 			stmt.setString(1, username);
-			stmt.setString(2, passwrod);
+			stmt.setString(2, password);
 			
 			rs = stmt.executeQuery();
 			
