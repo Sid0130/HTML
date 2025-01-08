@@ -176,6 +176,13 @@
             <version>${jackson-version}</version>
         </dependency>
 
+        <!-- Add-on module to support JSR-310 (Java 8 Date & Time API) data types. -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>${jackson-version}</version>
+        </dependency>
+
         <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -191,22 +198,22 @@
             <artifactId>spring-jdbc</artifactId>
             <version>${spring-version}</version>
         </dependency>
-        
+
         <!-- Spring Tx(Transaction) -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
             <version>${spring-version}</version>           
         </dependency>
-        
-        <!-- MyBatis -->        
+
+        <!-- MyBatis -->
         <!-- MyBatis SQL mapper framework -->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
             <version>${mybatis-version}</version>
         </dependency>
-        
+
         <!-- Spring bridge for Mybatis Sql mapper framework-->
         <dependency>
             <groupId>org.mybatis</groupId>

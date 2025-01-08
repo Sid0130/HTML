@@ -72,5 +72,6 @@ public class PostDaoTest {
 		Assertions.assertEquals(1, result);
 	}
 
+
 }
 

@@ -13,4 +13,5 @@ public interface PostDao {
 	int updatePost(Post post);
 	int deletePost(Integer id);
 	List<Post> search(PostSearchDto dto);
+	int selectById(String ctext);
 }

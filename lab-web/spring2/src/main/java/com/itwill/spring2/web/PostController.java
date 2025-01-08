@@ -79,6 +79,7 @@ public class PostController {
 	
 	@GetMapping("/delete")
 	public String delete(@RequestParam Integer id) {
+		
 		log.debug("delete(id={})", id);
 		
 		postService.delete(id);
@@ -99,6 +100,7 @@ public class PostController {
 	
 	@GetMapping("/search")
 	public String search(PostSearchDto dto, Model model) {
+		// 리퀘스트 파라미터가 전달될 클래스를 선언하고, 뷰에 전달할 모델을 선언
 		log.debug("search(dto={})", dto);
 		
 		// 서비스 계층의 메서드를 호출해서 검색 결과 리스트를 가져옴.
@@ -107,6 +109,18 @@ public class PostController {
 		// 검색 결과를 뷰에게 전달.
 		model.addAttribute("posts",list); //-> list의 리스트를 el로 선언되있는 변수 이름과 같아야함.
 		
+		// 어떤 곳으로 가야할지 러턴.
 		return "post/list"; //-> /WEB-INF/views/post/list.jsp
 	}
+	
+	// 하나씩 들고올때 리퀘스트 파라미터를 선언. dto는 애너테이션 선언하지 않아도
+	// 디스패쳐 서블릿 선언되어져있는 클래스의 기본생성자를 호출, 그래서 dto는 반드시 기본생성자가 있어야하고
+	// 클래스에 필드를 파라미터 이름으로 세터가 있는지를 또 디스패쳐가 확인
+	// 요청파라미터로 확인하고 만들어진 객체를 파라미터에 넣어준다 () 괄호안에.
+	// dto를 설계할때 폼 양식이나 요청파라미터 이름으로 필드를 설계해주고, 기본 생성자, get,set을 만들어주면
+	// 디스패쳐 서블릿이 자동으로 만들어줌.
+	
+	
+	
+	
 }
