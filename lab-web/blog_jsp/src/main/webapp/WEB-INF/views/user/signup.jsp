@@ -8,7 +8,7 @@
         <!-- Bootstrap을 사용하기 위한 meta name="viewport" 설정. -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Blog_jsp : 회원가입</title>
-        
+        <link rel="stylesheet" href="../static/css/user_signup.css">
         
         <!-- Bootstrap CSS 링크. -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
@@ -20,24 +20,32 @@
             <%@ include file="../fragments/header.jspf" %>
             
             <main class="mt-2 container-fluid">
-                <div class="card">
-                    <div class="card-header">
-                        <h2>회원가입</h2>
-                    </div>
-                    <div class="card-body">
+                <div class="form_content">
+                    <div class="form_section">
                         <form>
-                            <div class="mt-2">
-                                <label class="form-label" for="username">아이디</label>
-                                <input class="form-control" id="username" type="text" >
+                            <div class="form_list">
+                                <div class="form_user">
+                                <input class="form_itme" id="username" name="username" type="text" placeholder="아이디">
+                                </div>
+                                <div class="form_password">
+                                    <input class="form_itme" id="password" name="password" type="password" placeholder="비밀번호">
+                                </div>
+                                <div class="form_email">
+                                    <input class="form_itme" id="email" name="email" type="email" placeholder="이메일">
+                                </div>
                             </div>
-                            <div class="mt-2">
-                                <label class="form-label" for="password">비밀번호</label>
-                                <input class="form-control" id="password" type="password" >
+                            <div class="form_list">
+                                <div class="form_name">
+                                <input class="form_itme" name="name" type="text" placeholder="이름">
+                                </div>
                             </div>
-                            <div class="mt-2">
-                                <label class="form-label" for="email">이메일</label>
-                                <input class="form-control" id="email" type="email" >
+                            
+                            <div>
+                                <div class="form-btn">
+                                    <input class="form-control btn btn-outline-success" type="submit" value="저장">
+                                </div>
                             </div>
+                    
                         </form>
                     </div>
                 </div>
