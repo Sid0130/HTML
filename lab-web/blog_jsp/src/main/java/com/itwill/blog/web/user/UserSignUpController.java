@@ -10,6 +10,7 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.itwill.blog.domain.Member;
 import com.itwill.blog.service.MemberService;
 
 /**
@@ -49,6 +50,26 @@ public class UserSignUpController extends HttpServlet {
     @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
+    	String username = request.getParameter("username");
+    	String name = request.getParameter("name");
+    	String password = request.getParameter("password");
+    	String email = request.getParameter("email");
+    	String phone = request.getParameter("phone");
+    	String birthday = request.getParameter("birthday");
+    	
+    	Member member = Member.bulider()
+    			.username(username)
+    			.name(name)
+    			.password(password)
+    			.email(email)
+    			.birthday(birthday)
+    			.phone(phone)
+    			.build();
+    	
+    	memberService.signUp(member);
+    	
+    	String url = request.getContextPath() + "/";
+    	response.sendRedirect(url);
 	}
 
 }

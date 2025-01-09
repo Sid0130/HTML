@@ -23,5 +23,14 @@ public enum MemberService {
 		log.debug("signIn result={}", member);
 		return member;
 	}
+	
+	// 회원가입 서비스
+	public int signUp(Member member) {
+		
+		int result = memberDao.insert(member);
+		
+		return result;
+		
+	}
 
 }

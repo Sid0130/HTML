@@ -7,18 +7,25 @@ public class Member {
 	private Integer id;
 	private String username;
 	private String password;
+	private String name;
+	private String phone;
+	private String birthday;
 	private String email;
 	private Integer points;
 	private LocalDateTime createdTime;
 	private LocalDateTime modifiedTime;
-	
-	public Member() {}
 
-	public Member(Integer id, String username, String password, String email, Integer points, LocalDateTime createdTime,
-			LocalDateTime modifiedTime) {
+	public Member() {
+	}
+
+	public Member(Integer id, String username, String password, String name, String phone, String birthday,
+			String email, Integer points, LocalDateTime createdTime, LocalDateTime modifiedTime) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
+		this.name = name;
+		this.phone = phone;
+		this.birthday = birthday;
 		this.email = email;
 		this.points = points;
 		this.createdTime = createdTime;
@@ -27,8 +34,9 @@ public class Member {
 
 	@Override
 	public String toString() {
-		return "Member [id=" + id + ", username=" + username + ", password=" + password + ", email=" + email
-				+ ", points=" + points + ", createdTime=" + createdTime + ", modifiedTime=" + modifiedTime + "]";
+		return "Member [id=" + id + ", username=" + username + ", password=" + password + ", name=" + name + ", phone="
+				+ phone + ", birthday=" + birthday + ", email=" + email + ", points=" + points + ", createdTime="
+				+ createdTime + ", modifiedTime=" + modifiedTime + "]";
 	}
 
 	public String getUsername() {
@@ -82,55 +90,100 @@ public class Member {
 	public Integer getId() {
 		return id;
 	}
-	
-	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
+
 	public static MemberBuilder bulider() {
 		return new MemberBuilder();
 	}
-	
+
 	public static class MemberBuilder {
 		private Integer id;
 		private String username;
 		private String password;
 		private String email;
+		private String name;
+		private String phone;
+		private String birthday;
 		private Integer points;
 		private LocalDateTime createdTime;
 		private LocalDateTime modifiedTime;
-		
-		
-		private MemberBuilder() {}
-		
+
+		private MemberBuilder() {
+		}
+
 		public MemberBuilder id(Integer id) {
 			this.id = id;
 			return this;
 		}
-		
+
 		public MemberBuilder username(String username) {
 			this.username = username;
 			return this;
 		}
+
 		public MemberBuilder password(String password) {
 			this.password = password;
 			return this;
 		}
+
 		public MemberBuilder email(String email) {
 			this.email = email;
 			return this;
 		}
+
+		public MemberBuilder name(String name) {
+			this.name = name;
+			return this;
+		}
+
+		public MemberBuilder phone(String phone) {
+			this.phone = phone;
+			return this;
+		}
+
+		public MemberBuilder birthday(String birthday) {
+			this.birthday = birthday;
+			return this;
+		}
+
 		public MemberBuilder points(Integer points) {
 			this.points = points;
 			return this;
 		}
+
 		public MemberBuilder createdTime(LocalDateTime createdTime) {
 			this.createdTime = createdTime;
 			return this;
 		}
-		
+
 		public MemberBuilder createdTime(Timestamp createdTime) {
 			this.createdTime = createdTime.toLocalDateTime();
 			return this;
 		}
-		
+
 		public MemberBuilder modifiedTime(LocalDateTime modifiedTime) {
 			this.modifiedTime = modifiedTime;
 			return this;
@@ -140,11 +193,10 @@ public class Member {
 			this.modifiedTime = modifiedTime.toLocalDateTime();
 			return this;
 		}
-		
+
 		public Member build() {
-			return new Member(id, username, password, email, points, createdTime, modifiedTime);
+			return new Member(id, username, password, name, phone, birthday, email, points, createdTime, modifiedTime);
 		}
 	}
-
 
 }
