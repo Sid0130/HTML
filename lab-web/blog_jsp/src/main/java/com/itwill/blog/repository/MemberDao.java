@@ -60,8 +60,8 @@ public enum MemberDao {
 	
 	// 유저 정보를 삽입하는 SQL 쿼리문
 	private static final String SQL_INSERT =
-			"insert into members (username, password, email, name, phone, birthday, created_time, modified_time) "
-			+ "values (?, ?, ?, ?, ?, ?, systimestamp, systimestamp);";
+			"insert into members (username, name, phone, birthday, password, email, created_time, modified_time) "
+			+ "values (?, ?, ?, ?, ?, ?, systimestamp, systimestamp)";
 	
 	// 회원 정보를 삽입하여 성공 값을 반환
 	public int insert(Member member) {
@@ -76,6 +76,12 @@ public enum MemberDao {
 		try {
 			conn = ds.getConnection();
 			stmt = conn.prepareStatement(SQL_INSERT);
+			stmt.setString(1, member.getUsername());
+			stmt.setString(2, member.getName());
+			stmt.setString(3, member.getPhone());
+			stmt.setString(4, member.getBirthday());
+			stmt.setString(5, member.getPassword());
+			stmt.setString(6, member.getEmail());
 			result = stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -88,8 +94,11 @@ public enum MemberDao {
 	// 회원정보를 담은 Member 객체를 생성하는 메서드
 	public Member toMemberFromResultSet(ResultSet rs) throws SQLException {
 	    Integer id = rs.getInt("id"); // 회원 ID
-	    String username = rs.getString("username"); // 사용자 이름
+	    String username = rs.getString("username"); // 사용자 아이디
 	    String password = rs.getString("password"); // 비밀번호
+	    String name = rs.getString("name"); // 사용자 이름
+	    String phone = rs.getString("phone"); // 핸드폰
+	    String birthday = rs.getString("birthday"); //생일
 	    String email = rs.getString("email"); // 이메일
 	    Integer points = rs.getInt("points"); // 포인트
 	    Timestamp createdTime = rs.getTimestamp("created_time"); // 생성 시간
@@ -101,6 +110,9 @@ public enum MemberDao {
 				.username(username)
 				.password(password)
 				.email(email)
+				.name(name)
+				.phone(phone)
+				.birthday(birthday)
 				.points(points)
 				.createdTime(createdTime)
 				.modifiedTime(modifiedTime)

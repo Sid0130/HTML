@@ -50,6 +50,8 @@ public class UserSignUpController extends HttpServlet {
     @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
+    	
+    	// 회원가입 페이지 요청 파라미터를 가져옴.
     	String username = request.getParameter("username");
     	String name = request.getParameter("name");
     	String password = request.getParameter("password");
@@ -57,6 +59,10 @@ public class UserSignUpController extends HttpServlet {
     	String phone = request.getParameter("phone");
     	String birthday = request.getParameter("birthday");
     	
+    	log.debug("doPost(username={}, name={}, password={}, email={}, phone={}, birthday={})",
+    			username, name, password, email, phone, birthday);
+    	
+    	// 회원 데이터의 객체를 생성(빌드), 
     	Member member = Member.bulider()
     			.username(username)
     			.name(name)
@@ -66,6 +72,8 @@ public class UserSignUpController extends HttpServlet {
     			.phone(phone)
     			.build();
     	
+    	
+    	// 비지니스 서비스 테이블에 회원 정보 호출 삽입
     	memberService.signUp(member);
     	
     	String url = request.getContextPath() + "/";
