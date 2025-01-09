@@ -25,7 +25,7 @@
                         <form>
                             <div class="form_list">
                                 <div class="form_user">
-                                <input class="form_itme" id="username" name="username" type="text" placeholder="아이디">
+                                    <input class="form_itme" id="username" name="username" type="text" placeholder="아이디">
                                 </div>
                                 <div class="form_password">
                                     <input class="form_itme" id="password" name="password" type="password" placeholder="비밀번호">
@@ -36,13 +36,19 @@
                             </div>
                             <div class="form_list">
                                 <div class="form_name">
-                                <input class="form_itme" name="name" type="text" placeholder="이름">
+                                    <input class="form_itme" id="name" name="name" type="text" placeholder="이름">
+                                </div>
+                                <div class="form_birthday">
+                                    <input class="form_itme" id="birthday" name="birthday" type="text" placeholder="생년월일 8자리">
+                                </div>
+                                <div class="form_phone">
+                                    <input class="form_itme" id="phone" name="phone" type="text" placeholder="전화번호">
                                 </div>
                             </div>
                             
                             <div>
-                                <div class="form-btn">
-                                    <input class="form-control btn btn-outline-success" type="submit" value="저장">
+                                <div class="form_btn">
+                                    <input class="btn btn-outline-success" type="submit" value="저장">
                                 </div>
                             </div>
                     

@@ -10,7 +10,7 @@ html, body {
 }
 
 /* 중앙 정렬 */
-.form_content {
+.form_content { 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,13 +18,18 @@ html, body {
 
 /* 폼 섹션 스타일 */
 .form_section {
-    width: 300px; /* 폼의 고정 너비 */
+    width: 460px; /* 폼의 고정 너비 */
     overflow: hidden; /* 테두리 밖 내용 숨김 */
     background-color: #fff; /* 배경 흰색 */
 }
 
+.btn{
+    width: 460px;
+    height: 50px;
+    margin-top: 5px;
+}
 
-/* 공통 입력 필드 */
+/* 공통 입력 필드 */  
 .form_itme {
     width: 100%;
     height: 50px;
@@ -38,7 +43,7 @@ html, body {
 
 /* 입력 필드 전체 컨테이너 */
 div.form_list {
-    width: 300px; /* 전체 폼 너비 */
+    width: 460px; /* 전체 폼 너비 */
     margin: 10px auto;
     background-color: #fff;
     border: 1px solid #ddd; /* 약한 1px 테두리 */
@@ -46,36 +51,47 @@ div.form_list {
     overflow: hidden; /* 테두리 밖 내용 숨김 */
 }
 
+/* 비밀번호, 생일 상하 테두리 */
+.form_password .form_itme,
+.form_birthday .form_itme {
+    border-top: 1px solid #ddd; /* 위쪽 테두리 추가 */
+    border-bottom: 1px solid #ddd; /* 아래쪽 테두리 추가 */
+}
 
 
-/* 상단 필드 (아이디) */
-.form_user .form_itme {
+
+/* 상단 필드 (아이디, 이름) */
+ .form_user .form_itme ,
+ .form_name .form_itme {
     border-top-left-radius: 8px; /* 상단 왼쪽 라운드 */
     border-top-right-radius: 8px; /* 상단 오른쪽 라운드 */
 }
 
-/* 중간 필드 (비밀번호) */
+
+/* 중간 필드 (비밀번호, 생일) */
+.form_birthday .form_itme,
 .form_password .form_itme {
     border-radius: 0; /* 중간 필드는 라운드 없음 */
     border-top: 1px solid #ddd; /* 위쪽 테두리 추가 */
     border-bottom: 1px solid #ddd; /* 아래쪽 테두리 추가 */
 }
 
-/* 하단 필드 (이메일) */
-.form_email .form_itme {
+/* 하단 필드 (이메일, 번호) */
+.form_email .form_itme,
+.form_phone .form_itme {
     border-bottom-left-radius: 8px; /* 하단 왼쪽 라운드 */
     border-bottom-right-radius: 8px; /* 하단 오른쪽 라운드 */
 }
 
-/* 상단 필드 (이름) */
-.form_name .form_itme {
-    border-top-left-radius: 8px; /* 상단 왼쪽 라운드 */
-    border-top-right-radius: 8px; /* 상단 오른쪽 라운드 */
-}
 
 /* 포커스 시 효과 */
 .form_itme:focus {
     border: 2px solid #007bff; /* 선택 시 빨간색 테두리 */
     background-color: #f5f5f5; /* 포커스 시 배경 강조 */
     outline: none; /* 기본 아웃라인 제거 */
+}
+
+.form_itme.error {
+    border: 2px solid red; /* 빨간 테두리 */
+    background-color: #ffe6e6; /* 연한 빨간 배경색 */
 }

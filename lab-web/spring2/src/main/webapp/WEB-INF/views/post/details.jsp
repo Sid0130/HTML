@@ -70,11 +70,47 @@
                     </div>
                 </div>
             </main>
-        </div>
+
+        <section>
+            <div class="mt-2 d-inline-flex gap-1">
+                <button class="btn btn-outline-secondary"
+                    id="btnToggleComment">댓글 보기</button>
+            </div>
+            
+            <!-- 댓글 보기/감추기 토글 버튼에 의해서 접기/펼치기를 할 영역 -->
+            <div class="mt-2 collapse" id="collapseComments">
+                <!-- 댓글 등록 UI -->
+                <div class="mt-2 card card-body">
+                    <div class="row">
+                        <div class="col-10">
+                            <textarea class="form-control" rows="3" 
+                                 id="ctext" placeholder="댓글 입력"></textarea>
+                            <input class="d-none" id="username" value="guest" readonly>
+                        </div>
+                        <div class="col-2">
+                            <button class="btn btn-outline-success"
+                                id="btnRegisterComment">등록</button>
+                            
+                        </div>
+                    </div>
+                </div>
+                <!-- 댓글 목록 UI -->
+                <div class="my-2" id="divComments">
+                    댓글 목록
+                </div>
+            </div>
+        </section>
+    </div>
         
         <!-- Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
         crossorigin="anonymous"></script>   
+        
+        <!-- Axios Http JS -->
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        
+        <c:url var="commentJS" value="/js/comments.js"/>
+        <script src="${commentJS}"></script>
 	</body>
 </html>
