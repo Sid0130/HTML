@@ -17,41 +17,48 @@
 	</head>
 	<body>
         <div>
-            <%@ include file="../fragments/header.jspf" %>
+<%--             <%@ include file="../fragments/header.jspf" %> --%>
             
             <main class="mt-2 container-fluid">
                 <div class="form_content">
                     <div class="form_section">
-                        <form>
+                        <div class="form_logo">
+                            <h5>회원가입</h5>
+                        </div>
+                        <form method="post">
                             <div class="form_list">
                                 <div class="form_user">
-                                    <input class="form_itme" id="username" name="username" type="text" placeholder="아이디">
+                                    <input class="form_itme" id="username" name="username" type="text" placeholder="아이디" autofocus />
                                 </div>
                                 <div class="form_password">
-                                    <input class="form_itme" id="password" name="password" type="password" placeholder="비밀번호">
+                                    <input class="form_itme" id="password" name="password" type="password" placeholder="비밀번호" />
                                 </div>
                                 <div class="form_email">
-                                    <input class="form_itme" id="email" name="email" type="email" placeholder="이메일">
+                                    <input class="form_itme" id="email" name="email" type="email" placeholder="이메일" />
                                 </div>
                             </div>
                             <div class="form_list">
                                 <div class="form_name">
-                                    <input class="form_itme" id="name" name="name" type="text" placeholder="이름">
+                                    <input class="form_itme" id="name" name="name" type="text" placeholder="이름" />
                                 </div>
                                 <div class="form_birthday">
-                                    <input class="form_itme" id="birthday" name="birthday" type="text" placeholder="생년월일 8자리">
+                                    <input class="form_itme" id="birthday" name="birthday" type="text" placeholder="생년월일 8자리" />
                                 </div>
                                 <div class="form_phone">
-                                    <input class="form_itme" id="phone" name="phone" type="text" placeholder="전화번호">
+                                    <input class="form_itme" id="phone" name="phone" type="text" placeholder="핸드폰번호" />
                                 </div>
                             </div>
-                            
+                                <div class="error_text" id="birthdayMsg" 
+                                    style="color: red; display: none;">
+                                </div>
+                                <div class="error_text" id="phoneMsg" 
+                                    style="color: red; display: none;">
+                                </div>
                             <div>
                                 <div class="form_btn">
-                                    <input class="btn btn-outline-success" type="submit" value="저장">
+                                    <input class="btn btn-outline-success" id="btnInsert" type="submit" value="저장"/>
                                 </div>
                             </div>
-                    
                         </form>
                     </div>
                 </div>
@@ -63,5 +70,8 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
         crossorigin="anonymous"></script>   
+        
+        <c:url value="/static/js/user_signup.js" var="userSignUpJS" />   
+        <script src="${userSignUpJS}"></script>  
 	</body>
 </html>

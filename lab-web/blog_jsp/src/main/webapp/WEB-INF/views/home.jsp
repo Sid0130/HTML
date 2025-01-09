@@ -8,10 +8,6 @@
         <!-- Bootstrap을 사용하기 위한 meta name="viewport" 설정. -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Blog_Jsp</title>
-        <style>
-            
-        </style>
-        
         
         <!-- Bootstrap CSS 링크. -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
@@ -20,24 +16,22 @@
 	</head>
 	<body>
         <div>
-            <c:set value="홈 페이지" var="pageTitle" />
             <%@ include file="./fragments/header.jspf" %>
-            
         </div>
 
-    <div class="text-left">
-        <div class="row">
-            <h2 class="ms-5"> 최근 목록 </h2>
-            <div class="col-4">
-                <ul class="m-20 fs-5"  style="list-style:none;">
-                    <li class="mt-3">
-                        <a>테스트</a>
-                    </li>            
-                    <li class="mt-3">
-                        <a>테스트</a>
-                    </li>            
-                </ul>
-            </div>
+<!--     <div class="text-left"> -->
+<!--         <div class="row"> -->
+<!--             <h2 class="ms-5"> 최근 목록 </h2> -->
+<!--             <div class="col-4"> -->
+<!--                 <ul class="m-20 fs-5"  style="list-style:none;"> -->
+<!--                     <li class="mt-3"> -->
+<!--                         <a>테스트</a> -->
+<!--                     </li>             -->
+<!--                     <li class="mt-3"> -->
+<!--                         <a>테스트</a> -->
+<!--                     </li>             -->
+<!--                 </ul> -->
+<!--             </div> -->
 <!--             <div class="col-8">2 of 2 -->
 <!--                 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel"> -->
 <!--                   Carousel 내부 컨텐츠 -->
