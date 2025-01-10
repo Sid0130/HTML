@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const birthdayMsg = document.querySelector("div#birthdayMsg");
     const phoneInput = document.querySelector("input#phone");
     const phoneMsg = document.querySelector("div#phoneMsg");
+    const emailInput = document.querySelector('input#email');
     
 
         // 생년월일 입력 실시간 검증 및 형식화
