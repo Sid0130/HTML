@@ -35,7 +35,7 @@
                                     <th>수정시간</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="text-center">
                                 <c:forEach items="${posts}" var="p">
                                     <tr>
                                         <td>${p.id}</td>

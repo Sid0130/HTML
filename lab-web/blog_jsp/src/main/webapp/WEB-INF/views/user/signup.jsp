@@ -23,9 +23,12 @@
                 <div class="form_content">
                     <div class="form_section">
                         <div class="form_logo">
-                            <h5>회원가입</h5>
+                            <c:url value="/" var="homePage"/>
+                            <a href="${homePage}">
+                                <img  id="jspLogo" alt="LOGO_JSP" src="../static/image/sign2_jsp.png">
+                            </a>
                         </div>
-                        <form method="post">
+                        <form id="userSignUpForm">
                             <div class="form_list">
                                 <div class="form_user">
                                     <input class="form_itme" id="username" name="username" type="text" placeholder="아이디" autofocus />
@@ -33,8 +36,9 @@
                                 <div class="form_password">
                                     <input class="form_itme" id="password" name="password" type="password" placeholder="비밀번호" />
                                 </div>
-                                <div class="form_email">
+                                <div class="form_email me-3" style="display: flex; align-items: center;">
                                     <input class="form_itme" id="email" name="email" type="email" placeholder="이메일" />
+                                    <span id="emaildomain">@itwill.com</span>
                                 </div>
                             </div>
                             <div class="form_list">
@@ -56,7 +60,8 @@
                                 </div>
                             <div>
                                 <div class="form_btn">
-                                    <input class="btn btn-outline-success" id="btnInsert" type="submit" value="저장"/>
+                                    <button class="btn btn-outline-success" id="btnInsert">작성완료</button>
+<!--                                     <input class="btn btn-outline-success" id="btnInsert" type="submit" value="작성완료"/> -->
                                 </div>
                             </div>
                         </form>

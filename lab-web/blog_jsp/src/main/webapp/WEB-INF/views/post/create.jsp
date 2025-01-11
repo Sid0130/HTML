@@ -17,12 +17,11 @@
 	</head>
 	<body>
 		<div>
-            <c:set value="새 글 작성" var="pageTitle" />
             <%@ include file="../fragments/header.jspf" %>
         </div>
         
         <main>
-            <div class="container-fluid">
+            <div class="mt-2 container-fluid">
                 <div class="card">
                     <div class="card-header">
                         <h2>새 글 작성</h2>
