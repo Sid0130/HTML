@@ -63,14 +63,17 @@
                             </div>   
                         </form>  
                     </div>
-                    <div class="card-footer">
-                        <div class="d-flex justify-content-center">
-                            <c:url value="/post/modify" var="postModifyPage">
-                                <c:param name="id" value="${post.id}" />
-                            </c:url>
-                            <a class="btn btn-outline-success" href="${postModifyPage}">수정하기</a>
+                    
+                    <c:if test="${post.author eq signedInUser}">
+                        <div class="card-footer">
+                            <div class="d-flex justify-content-center">
+                                <c:url value="/post/modify" var="postModifyPage">
+                                    <c:param name="id" value="${post.id}" />
+                                </c:url>
+                                <a class="btn btn-outline-success" href="${postModifyPage}">수정하기</a>
+                            </div>
                         </div>
-                    </div>
+                    </c:if>
                 </div>
             </main>
         </div>

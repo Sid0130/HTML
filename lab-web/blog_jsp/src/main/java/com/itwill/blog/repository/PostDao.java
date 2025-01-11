@@ -199,7 +199,188 @@ public enum PostDao {
 		
 		return result;
 	}
+
+	private static final String SQL_SELECT_BY_TITLE = 
+			"select * from posts "
+			+ "where upper(title) like upper('%' || ? || '%') "
+			+ "order by id desc";
+	private static final String SQL_SELECT_BY_CONTENT = 
+			"select * from posts "
+			+ "where upper(content) like upper('%' || ? || '%') "
+			+ "order by id desc";
+	private static final String SQL_SELECT_BY_TITLE_OR_CONTENT = 
+			"select * from posts "
+			+ "where upper(title) like upper('%' || ? || '%') "
+			+ "or upper(content) like upper('%' || ? || '%') "
+			+ "order by id desc";
+	private static final String SQL_SELECT_BY_AUTHOR = 
+			"select * from posts "
+			+ "where upper(author) like upper('%' || ? || '%') "
+			+ "order by id desc";
+	
+	public List<Post> select(String category,String keyword) {
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		List<Post> result = new ArrayList<>();
+		try {
+			conn = ds.getConnection();
 			
+			switch(category) {
+			case "t":
+				stmt=conn.prepareStatement(SQL_SELECT_BY_TITLE);
+				stmt.setString(1, keyword);
+				break;
+			case "c":
+				stmt=conn.prepareStatement(SQL_SELECT_BY_CONTENT);
+				stmt.setString(2, keyword);
+				break;
+			case "tc":
+				stmt=conn.prepareStatement(SQL_SELECT_BY_TITLE_OR_CONTENT);
+				stmt.setString(1, keyword);
+				stmt.setString(2, keyword);
+				break;
+			case "a":
+				stmt=conn.prepareStatement(SQL_SELECT_BY_AUTHOR);
+				stmt.setString(1, keyword);
+				break;
+			}
+			
+			rs= stmt.executeQuery();
+			while(rs.next()) {
+				Post post = toPostFromResultSet(rs);
+				result.add(post);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(conn, stmt, rs);
+		}
+		return result;
+	}
+	
+	private static final String SQL_SELECT_BY_TITLE_PAGE = 
+			"select * from ("
+			+ "select rownum num, n.* "
+			+ "from (select * from posts where upper(title) like upper('%' || ? || '%') order by id desc) n"
+			+ ") "
+			+ "where num between ? and ?";
+	private static final String SQL_SELECT_BY_CONTENT_PAGE = 
+			"select * from ("
+			+ "select rownum num, n.* "
+			+ "from (select * from posts where upper(content) like upper('%' || ? || '%') order by id desc) n"
+			+ ") "
+			+ "where num between ? and ?";
+	
+	private static final String SQL_SELECT_BY_TITLE_OR_CONTENT_PAGE = 
+			"select * from ("
+			+ "select rownum num, n.* "
+			+ "from (select * from posts where upper(title) like upper('%' || ? || '%') "
+			+ "or upper(content) like upper('%' || ? || '%') order by id desc) n"
+			+ ") "
+			+ "where num between ? and ?";	
+	
+	private static final String SQL_SELECT_BY_AUTHOR_PAGE = 
+			"select * from ("
+			+ "select rownum num, n.* "
+			+ "from (select * from posts where upper(author) like upper('%' || ? || '%') order by id desc) n"
+			+ ") "
+			+ "where num between ? and ?";    
+			    
+			
+			
+	public List<Post> select(String category,String keyword, int page) {
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		List<Post> result = new ArrayList<>();
+		try {
+			conn = ds.getConnection();
+			
+			switch(category) {
+			case "t":
+				stmt=conn.prepareStatement(SQL_SELECT_BY_TITLE_PAGE);
+				stmt.setString(1, keyword);
+				stmt.setInt(2, 1+(page-1)*10);
+				stmt.setInt(3, page*10);
+				break;
+			case "c":
+				stmt=conn.prepareStatement(SQL_SELECT_BY_CONTENT_PAGE);
+				stmt.setString(2, keyword);
+				stmt.setInt(2, 1+(page-1)*10);
+				stmt.setInt(3, page*10);
+				break;
+			case "tc":
+				stmt=conn.prepareStatement(SQL_SELECT_BY_TITLE_OR_CONTENT_PAGE);
+				stmt.setString(1, keyword);
+				stmt.setString(2, keyword);
+				stmt.setInt(3, 1+(page-1)*10);
+				stmt.setInt(4, page*10);
+				break;
+			case "a":
+				stmt=conn.prepareStatement(SQL_SELECT_BY_AUTHOR_PAGE);
+				stmt.setString(1, keyword);
+				stmt.setInt(2, 1+(page-1)*10);
+				stmt.setInt(3, page*10);
+				break;
+			}
+			
+			rs= stmt.executeQuery();
+			while(rs.next()) {
+				Post post = toPostFromResultSet(rs);
+				result.add(post);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(conn, stmt, rs);
+		}
+		return result;
+	}	
+
+	private static final String SQL_COUNT_POSTS = "SELECT COUNT(*) FROM posts";
+
+	public int getTotalCount() {
+	    try (Connection conn = ds.getConnection();
+	         PreparedStatement stmt = conn.prepareStatement(SQL_COUNT_POSTS);
+	         ResultSet rs = stmt.executeQuery()) {
+	        if (rs.next()) {
+	            return rs.getInt(1); // 총 게시물 개수 반환
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return 0;
+	}	
+	private static final String SQL_SELECT_PAGE = 
+		    "SELECT * FROM ( " +
+		    "  SELECT ROWNUM AS rnum, posts.* " +
+		    "  FROM (SELECT * FROM posts ORDER BY id DESC) posts " +
+		    ") WHERE rnum BETWEEN ? AND ?";
+
+		public List<Post> select(int page, int pageSize) {
+		    List<Post> result = new ArrayList<>();
+		    int startRow = (page - 1) * pageSize + 1;
+		    int endRow = page * pageSize;
+
+		    try (Connection conn = ds.getConnection();
+		         PreparedStatement stmt = conn.prepareStatement(SQL_SELECT_PAGE)) {
+		        stmt.setInt(1, startRow);
+		        stmt.setInt(2, endRow);
+
+		        try (ResultSet rs = stmt.executeQuery()) {
+		            while (rs.next()) {
+		                result.add(toPostFromResultSet(rs));
+		            }
+		        }
+		    } catch (SQLException e) {
+		        e.printStackTrace();
+		    }
+		    return result;
+		}
 	private Post toPostFromResultSet(ResultSet rs) throws SQLException {
 		Integer id = rs.getInt("ID");									// 게시물 ID
 		String title = rs.getString("TITLE");							// 게시물 제목

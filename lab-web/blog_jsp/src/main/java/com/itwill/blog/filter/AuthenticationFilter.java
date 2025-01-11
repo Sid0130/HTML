@@ -9,8 +9,10 @@ import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,7 +61,30 @@ public class AuthenticationFilter extends HttpFilter {
 		String qs = req.getQueryString(); // QueryString 패스 경로
 		log.debug("request QueryString = {}",qs);
 		
-		chain.doFilter(request, response);
+		// 로그인 이후에 이동할 페이지(타겟)
+		String target = null;
+		if(qs != null) { //질의 문자열이 있는 경우
+			target = URLEncoder.encode(reqUrl + "?" + qs, "UTF-8");
+		} else {
+			target = URLEncoder.encode(reqUrl, "UTF-8"); // 없을 경우 자기 경로
+		}
+		log.debug("target = {}",target);
+		
+		// 세션에 로그인(signedInUser) 속성이 있는지 체크:
+		HttpSession session = req.getSession();
+		Object signedInUser = session.getAttribute("signedInUser");
+		if(signedInUser != null) { // 로그인 상태
+			log.debug("로그인 사용자 = {} ", signedInUser);
+			
+			chain.doFilter(request, response);
+		} else { // 로그아웃 상태.
+			log.debug("사용자 로그아웃");
+			
+			// 로그아웃 후 이동할 페이지 URL 생성
+			String url = req.getContextPath() + "/user/signin?target=" + target;
+			resp.sendRedirect(url);
+		}
+		
 	}
 
 	/**

@@ -27,10 +27,10 @@ header .nav-link {
 /* 오프캔버스 배경 */
 .offcanvas {
     background-color: #F5F5F5; /* Success 색상 */
-    color: #364c63; /* 글씨 흰색 */
+    color: #364c63; /* 글씨 남색 */
 }
 .offcanvas .nav-link:hover {
-    color: #f094a7;
+    color: #f094a7; /* 핑크 색상 */
     font-weight: bold;
 }
 

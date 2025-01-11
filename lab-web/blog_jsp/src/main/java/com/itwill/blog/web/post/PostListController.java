@@ -41,17 +41,40 @@ public class PostListController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
     	
-    	// 디버그 로그: doGet 메서드 호출 확인
-    	log.debug("doGet()"); 
-    	
-    	// 게시물 목록 데이터를 조회
-    	List<Post> post = postService.read(); 
-    	
-    	// 조회된 게시물 목록을 요청 속성에 추가
-    	request.setAttribute("posts", post); 
-    	
-    	// 서버에서 list.jsp로 요청 전달
-    	request.getRequestDispatcher("/WEB-INF/views/post/list.jsp").forward(request, response);
-	}
+//    	// 디버그 로그: doGet 메서드 호출 확인
+//    	log.debug("doGet()"); 
+//    	
+//    	// 게시물 목록 데이터를 조회
+//    	List<Post> post = postService.read(); 
+//    	
+//    	// 조회된 게시물 목록을 요청 속성에 추가
+//    	request.setAttribute("posts", post); 
+//    	
+//    	// 서버에서 list.jsp로 요청 전달
+//    	request.getRequestDispatcher("/WEB-INF/views/post/list.jsp").forward(request, response);
+        String pageParam = request.getParameter("p");
+        int page = (pageParam != null) ? Integer.parseInt(pageParam) : 1; // 기본 페이지 번호는 1
+
+        // 페이지 당 표시할 게시물 개수
+        int pageSize = 10;
+
+        // 전체 게시물 개수 가져오기
+        int totalPosts = postService.getTotalPostCount();
+
+        // 현재 페이지에 해당하는 게시물 가져오기
+        List<Post> posts = postService.read(page, pageSize);
+
+        // 마지막 페이지 번호 계산
+        int lastPage = (totalPosts % pageSize == 0) ? (totalPosts / pageSize) : (totalPosts / pageSize + 1);
+
+        // JSP에 필요한 데이터 설정
+        request.setAttribute("posts", posts);
+        request.setAttribute("currentPage", page);
+        request.setAttribute("lastPage", lastPage);
+        request.setAttribute("totalPosts", totalPosts);
+
+        // JSP로 포워딩
+        request.getRequestDispatcher("/WEB-INF/views/post/list.jsp").forward(request, response);
+    }
 
 }
