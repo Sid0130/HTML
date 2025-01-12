@@ -33,7 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 업데이트 버튼의 이벤트 리스너 설정
     btnUpdate.addEventListener('click',(e)=>{
-       
        const title = inputTitle.value; // 제목의 입력된 값을 할당
        const content = textareaContent.value; // 내용의 입력된 값을 할당
        
@@ -41,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
        if(title === '' || content === ''){
         alert('제목과 내용은 반드시 입력해야 합니다.');
         return;
+        
        }
        
        // confirm() 함수를 호출해서 수정된 내용을 저장할 지 확인.

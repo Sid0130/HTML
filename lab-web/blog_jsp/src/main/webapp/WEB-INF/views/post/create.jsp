@@ -17,19 +17,18 @@
 	</head>
 	<body>
 		<div>
-            <c:set value="새 글 작성" var="pageTitle" />
             <%@ include file="../fragments/header.jspf" %>
         </div>
         
         <main>
-            <div class="container-fluid">
+            <div class="mt-2 container-fluid">
                 <div class="card">
                     <div class="card-header">
                         <h2>새 글 작성</h2>
                     </div>
                     <div class="card-body">
                         <c:url value="/post/create" var="postCreatePage"/>
-                        <form action="${postCreatePage}" method="post">
+                        <form action="${postCreatePage}" method="post" enctype="multipart/form-data">
                             <div class="mt-3">
                                 <input type="text" class="form-control" 
                                         name="title" placeholder="제목" required autofocus/>
@@ -38,9 +37,13 @@
                                 <textarea rows="5" class="form-control"
                                     name="content" placeholder="내용" required></textarea>
                             </div>
-                            <div class="mt-3">
+                            <div class="d-none">
                                 <input type="text" class="form-control" 
-                                        name="author" placeholder="작성자" required/>
+                                        name="author" value="${signedInUser}" placeholder="작성자" required/>
+                            </div>
+                            <div class="mt-3">
+                                <input type="file" class="form-control" 
+                                        name="files" id="files" value="파일 첨부"/>
                             </div>
                             <div class="mt-2 d-flex justify-content-end">
                                 <input type="submit" value="취소" 

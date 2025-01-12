@@ -1,0 +1,6 @@
+@charset "UTF-8";
+
+body, html {
+/*     background-color: #364c63; */
+    background: linear-gradient(to right, #364c63, #40536d, #4b6077);
+}

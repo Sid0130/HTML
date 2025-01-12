@@ -66,4 +66,26 @@ public enum PostService {
 		return result;
 	}
 	
+	// 테이터베이스 게시물을 검색으로 조회
+	public List<Post> read(String category, String keyword){
+		log.debug("read(category={}, keyword={}", category, keyword);
+		
+		return postDao.select(category,keyword);
+	}
+	
+	public List<Post> read(String category, String keyword, int page) {
+	    // 페이지 정보를 포함한 데이터 조회
+	    return postDao.select(category, keyword, page);
+	}
+	
+	public int getTotalPostCount() {
+	    return postDao.getTotalCount(); // DAO에서 총 게시물 개수를 반환
+	}
+
+	public List<Post> read(int page, int pageSize) {
+	    return postDao.select(page, pageSize); // DAO에서 페이징 처리된 데이터 반환
+	}
+	
+	
+	
 }
