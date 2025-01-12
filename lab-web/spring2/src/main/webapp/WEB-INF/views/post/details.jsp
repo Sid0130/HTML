@@ -48,7 +48,7 @@
                                    value="${post.author}" name="author" readonly/>
                             </div>
                             <div class="mt-2">
-                                <label class="form-label" for="createTime">작성시간</label>
+                                <label class="form-label" for="createdTime">작성시간</label>
                                 <input class="form-control" type="text" id="createdTime" name="createdTime" 
                                    value="${post.createdTime}" readonly/>
                             </div>
@@ -90,16 +90,38 @@
                         <div class="col-2">
                             <button class="btn btn-outline-success"
                                 id="btnRegisterComment">등록</button>
-                            
                         </div>
                     </div>
                 </div>
                 <!-- 댓글 목록 UI -->
-                <div class="my-2" id="divComments">
-                    댓글 목록
-                </div>
+                <div class="my-2" id="divComments"></div>         
             </div>
         </section>
+        
+        <!-- 댓글 업데이트 모달(다이얼로그) -->
+        <div id="commentModal" class="modal" tabindex="-1"> <!-- 가상의 축 -->
+            <div class="modal-dialog"> <!-- alert창과 비슷한데 창이 뜨면 뒤쪽을 희미하게 만들거나 선택을 하지 못하게
+            앞쪽을 포커스를 주는 역할 -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">댓글 업데이트</h5>
+                        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- 수정할 댓글 아이디(번호) -->
+                        <input class="d-none" id="modalCommentId" readonly />
+                        <!-- 수정할 댓글 내용 -->
+                        <textarea class="form-control" id="modalCommentText"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-outline-secondary" data-bs-dismiss="modal">취소</button>
+                        <button class="btn btn-outline-success" id="btnUpdateCmnt">저장</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
     </div>
         
         <!-- Bootstrap JS -->

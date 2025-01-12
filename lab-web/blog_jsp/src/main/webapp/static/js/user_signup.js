@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const birthdayMsg = document.querySelector("div#birthdayMsg");
     const phoneInput = document.querySelector("input#phone");
     const phoneMsg = document.querySelector("div#phoneMsg");
+
     // 회원가입 정보 요소를 찾음
     const userSignUpForm = document.querySelector('form#userSignUpForm');
     // 유저이름을 찾음
