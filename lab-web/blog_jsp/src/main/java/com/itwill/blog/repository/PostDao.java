@@ -63,8 +63,8 @@ public enum PostDao {
 	
 	// 게시물 데이터를 삽입하는 SQL_INSERT 쿼리문
 	private static final String SQL_INSERT = 
-			"insert into posts (title, content, author, created_time, modified_time) "
-			+ "values(?, ?, ?, systimestamp, systimestamp)";
+			"insert into posts (title, content, author, files, created_time, modified_time) "
+			+ "values(?, ?, ?, ?,systimestamp, systimestamp)";
 	
 	// 게시물 데이터를 데이터베이스에서 생성하여 업데이트.
 	public int insert(Post post) {
@@ -84,6 +84,7 @@ public enum PostDao {
 			stmt.setString(1, post.getTitle());		//첫 번째 파라미터: 제목
 			stmt.setString(2, post.getContent());	//두 번째 파라미터: 내용
 			stmt.setString(3, post.getAuthor());	//세 번째 파라미터: 작성자
+			stmt.setString(4, post.getFiles());
 			
 			//SQL 업데이트 실행 후 행의 수 반환.
 			result = stmt.executeUpdate();
@@ -309,7 +310,7 @@ public enum PostDao {
 				break;
 			case "c":
 				stmt=conn.prepareStatement(SQL_SELECT_BY_CONTENT_PAGE);
-				stmt.setString(2, keyword);
+				stmt.setString(1, keyword);
 				stmt.setInt(2, 1+(page-1)*10);
 				stmt.setInt(3, page*10);
 				break;
@@ -386,12 +387,13 @@ public enum PostDao {
 		String title = rs.getString("TITLE");							// 게시물 제목
 		String content = rs.getString("CONTENT");						// 게시물 내용
 		String author = rs.getString("AUTHOR");							// 작성자
+		String files = rs.getString("FILES");							// 파일
 		Timestamp createdTime = rs.getTimestamp("CREATED_TIME");		// 생성 시간
 		Timestamp modifiedTime = rs.getTimestamp("MODIFIED_TIME");		// 수정 시간
 		
 		// Post 객체 생성 및 반환(빌더 패턴 적용)
 		Post post = Post.bulider()
-				.id(id).title(title).content(content).author(author)
+				.id(id).title(title).content(content).author(author).files(files)
 				.createdTime(createdTime).modifiedTime(modifiedTime)
 				.build();
 		

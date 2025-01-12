@@ -46,6 +46,14 @@
                                      readonly >${ post.content }</textarea>
                                 <!-- input은 values에 값을 넣지만 textarea는 사이에 넣어주면됨 -->
                             </div> 
+                            <div class="mt-2" >
+                                <label class="form-label" for="files">파일</label>
+                                <div style="text-align:left; text-indent:10px;">
+                                <c:forTokens var="fileName" items="${post.files}" delims=",">
+                                    <a href="/static/file/${fileName}" target="_blank">${fileName}</a>
+                                </c:forTokens>
+                                </div>
+                            </div> 
                             <div class="mt-2">
                                 <label class="form-label" for="author">작성자</label>
                                 <input class="form-control" id="author" name="author" 

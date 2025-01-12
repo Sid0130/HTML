@@ -29,9 +29,32 @@
     flex: 1;
     overflow-y: auto; /* 내용이 넘칠 경우 스크롤 */
 }
-
 .card-footer {
-    background-color: #f8f9fa; /* 푸터 배경색 */
-    text-align: center;
+    display: flex; /* Flexbox 컨테이너 설정 */
+    justify-content: center; /* 모든 자식을 중앙 정렬 */
+    align-items: center; /* 세로 가운데 정렬 */
+    background-color: #f8f9fa; /* 배경색 */
     padding: 10px 0;
+    position: relative; /* indexer의 위치를 조정하기 위한 상대 위치 */
+}
+
+.pagination-container {
+    flex: none; /* 크기 자동 확장 방지 */
+    text-align: center; /* 내부 텍스트 중앙 정렬 */
+}
+.pagination {
+    margin: 0 auto; /* 가운데 정렬 */
+    display: inline-flex; /* 가로로 나열 */
+    list-style: none;
+    padding: 0;
+}
+.indexer {
+    position: absolute; /* indexer를 절대 위치로 배치 */
+    right: 15px; /* 오른쪽 끝에서 15px 여백 */
+    font-size: 14px;
+    color: #333;
+}
+
+.page-list{
+    color: orange;
 }

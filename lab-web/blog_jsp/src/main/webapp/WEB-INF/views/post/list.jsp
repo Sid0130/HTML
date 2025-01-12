@@ -76,12 +76,11 @@
                 </table>
             </div>
             <div class="card-footer">
-                <c:url value="/post/pagination" var="postPaginationPage"/>
-                    <nav aria-label="Page navigation example">
+                    <nav aria-label="Page navigation example" class="pagination-container">
+                        <ul class="pagination">
                         <c:set var="page" value="${param.p != null ? param.p : 1}"/>
                         <c:set var="startNum" value="${page-(page-1)%5}"/>
-                        <c:set var="lastNum" value="13"/>
-                        <ul class="pagination d-flex justify-content-center mt-3">
+                        <c:set var="lastNum" value="8"/>
                             
                             <!-- 이전 페이지 -->
                             <li class="page-item">
@@ -99,7 +98,7 @@
                             <!-- 페이지 번호 -->
                             <c:forEach var="i" begin="0" end="4">
                             <li class="page-item">
-                                <a class="page-link" href="?category=${param.category}&keyword=${param.keyword}&p=${startNum + i}">
+                                <a class="page-link ${param.p == (startNum + i) ? 'active' : ''}"  href="?category=${param.category}&keyword=${param.keyword}&p=${startNum + i}">
                                 ${startNum + i}
                                 </a>
                             </li>
@@ -120,6 +119,12 @@
                             </li>
                         </ul>
                     </nav>
+                    <c:set var="totalPages" value="10" />
+                    <div>
+                        <div class="indexer">
+                             <span class="page-list">${(empty param.p) ? 1 : param.p}</span> / ${totalPages} pages
+                        </div>
+                    </div>
             </div>
         </div>
     </main>

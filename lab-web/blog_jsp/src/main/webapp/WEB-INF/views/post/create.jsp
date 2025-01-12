@@ -28,7 +28,7 @@
                     </div>
                     <div class="card-body">
                         <c:url value="/post/create" var="postCreatePage"/>
-                        <form action="${postCreatePage}" method="post">
+                        <form action="${postCreatePage}" method="post" enctype="multipart/form-data">
                             <div class="mt-3">
                                 <input type="text" class="form-control" 
                                         name="title" placeholder="제목" required autofocus/>
@@ -40,6 +40,10 @@
                             <div class="d-none">
                                 <input type="text" class="form-control" 
                                         name="author" value="${signedInUser}" placeholder="작성자" required/>
+                            </div>
+                            <div class="mt-3">
+                                <input type="file" class="form-control" 
+                                        name="files" id="files" value="파일 첨부"/>
                             </div>
                             <div class="mt-2 d-flex justify-content-end">
                                 <input type="submit" value="취소" 

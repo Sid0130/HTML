@@ -8,19 +8,30 @@ public class Post {
 	private String title;
 	private String content;
 	private String author;
+	private String files;
 	private LocalDateTime createdTime;
 	private LocalDateTime modifiedTime;
 	
 	public Post() {}
 	
-	public Post(Integer id, String title, String content, String author, LocalDateTime createdTime,
+	public Post(Integer id, String title, String content, String author, String files, LocalDateTime createdTime,
 			LocalDateTime modifiedTime) {
 		this.id = id;
 		this.title = title;
 		this.content = content;
 		this.author = author;
+		this.files = files;
 		this.createdTime = createdTime;
 		this.modifiedTime = modifiedTime;
+	}
+
+	
+	public String getFiles() {
+		return files;
+	}
+
+	public void setFiles(String files) {
+		this.files = files;
 	}
 
 	public String getTitle() {
@@ -67,12 +78,13 @@ public class Post {
 		return id;
 	}
 
+	
 	@Override
 	public String toString() {
-		return "Post [id=" + id + ", title=" + title + ", content=" + content + ", author=" + author + ", createdTime="
-				+ createdTime + ", modifiedTime=" + modifiedTime + "]";
+		return "Post [id=" + id + ", title=" + title + ", content=" + content + ", author=" + author + ", files="
+				+ files + ", createdTime=" + createdTime + ", modifiedTime=" + modifiedTime + "]";
 	}
-	
+
 	public static PostBuilder bulider() {
 		return new PostBuilder();	
 		
@@ -83,6 +95,7 @@ public class Post {
 		private String title;
 		private String content;
 		private String author;
+		private String files;
 		private LocalDateTime createdTime;
 		private LocalDateTime modifiedTime;
 		
@@ -108,7 +121,11 @@ public class Post {
 			this.author = author;
 			return this;
 		}
-
+		
+		public PostBuilder files(String files) {
+			this.files = files;
+			return this;
+		}
 		public PostBuilder createdTime(LocalDateTime createdTime) {
 			this.createdTime = createdTime;
 			return this;
@@ -130,7 +147,7 @@ public class Post {
 		}
 
 		public Post build() {
-			return new Post(id, title, content, author, createdTime, modifiedTime);
+			return new Post(id, title, content, author, files, createdTime, modifiedTime);
 		}
 	}
 		
