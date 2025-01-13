@@ -50,7 +50,15 @@
                                 <label class="form-label" for="files">파일</label>
                                 <div style="text-align:left; text-indent:10px;">
                                 <c:forTokens var="fileName" items="${post.files}" delims=",">
-                                    <a href="/static/file/${fileName}" target="_blank">${fileName}</a>
+                                    <a href="${pageContext.request.contextPath}/post/details?action=download&file=${fileName}">
+                                         ${fileName} 다운로드</a>
+                                    <c:if test="${fileName.toLowerCase().endsWith('.jpg') 
+                                         or fileName.toLowerCase().endsWith('.jpeg') 
+                                         or fileName.toLowerCase().endsWith('.png') 
+                                         or fileName.toLowerCase().endsWith('.gif')}" >
+                                <img src="${pageContext.request.contextPath}/static/file/${fileName}" 
+                                    alt="${fileName}" style="display:block;"/> 
+                                    </c:if>
                                 </c:forTokens>
                                 </div>
                             </div> 

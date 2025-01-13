@@ -26,7 +26,11 @@ import com.itwill.blog.service.PostService;
  */
 
 @WebServlet(name = "postCreateConteroller", urlPatterns = { "/post/create" })
-@MultipartConfig
+@MultipartConfig(
+	maxFileSize = 1024 * 1024 * 5,
+	maxRequestSize = 1024 * 1024 * 50
+)
+	
 public class PostCreateConteroller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -36,9 +40,7 @@ public class PostCreateConteroller extends HttpServlet {
 	// 비지니스 로직을 처리하는 서비스 객체 (싱글톤 패턴)
 	private final PostService postService = PostService.INSTANCE;
 	
-	private static final String UPLOAD_DIR = "/static/file";
-       
-    /**
+	/**
      * @see HttpServlet#HttpServlet()
      */
     public PostCreateConteroller() {}
@@ -93,32 +95,40 @@ public class PostCreateConteroller extends HttpServlet {
     	List<String> fileNames = new ArrayList<>();
     	
         // 프로젝트 루트 디렉토리 기준으로 저장 경로 설정
-        String uploadPath = System.getProperty("user.dir") + File.separator + UPLOAD_DIR;
+        // 저장 경로 설정
+//    	String uploadPath = "C:/java157/tool/git/HTML/lab-web/blog_jsp/src/main/webapp/static/file";
+    	String uploadPath = "C:/Github/HTML/lab-web/blog_jsp/src/main/webapp/static/file";
+    	
+        log.debug("Upload Path: " + uploadPath);
 
-        // 디렉토리가 존재하지 않으면 생성
+        // 저장 디렉토리가 없으면 생성
         File uploadDir = new File(uploadPath);
         if (!uploadDir.exists()) {
-            uploadDir.mkdirs(); // 디렉토리 생성
+            if (uploadDir.mkdirs()) {
+                log.debug("Directory created: " + uploadPath);
+            } else {
+                throw new IOException("Failed to create directory: " + uploadPath);
+            }
         }
-        
-        log.debug("Upload Path: " + uploadPath);
+
         // 파일 저장
         for (Part part : request.getParts()) {
             if ("files".equals(part.getName()) && part.getSize() > 0) {
+                // 업로드된 파일 이름 가져오기
                 String fileName = Paths.get(part.getSubmittedFileName()).getFileName().toString();
                 String savedPath = uploadPath + File.separator + fileName;
 
                 try {
-                    part.write(savedPath); // 파일 저장
-                    fileNames.add(fileName);
+                    // 파일을 저장 경로에 저장
+                    part.write(savedPath);
+                    fileNames.add(fileName); // 파일 이름 저장
                     log.debug("File saved to: " + savedPath);
-                } catch (Exception e) {
+                } catch (IOException e) {
                     log.error("File save failed for: " + savedPath, e);
-                    log.debug("File name: " + fileName);
                 }
             }
         }
-    	
-    	return fileNames;
+
+        return fileNames;
     }
 }

@@ -93,8 +93,10 @@
                         </div>
                     </div>
                 </div>
+                
                 <!-- 댓글 목록 UI -->
-                <div class="my-2" id="divComments"></div>         
+                <div class="my-2" id="divComments"></div>
+                         
             </div>
         </section>
         
