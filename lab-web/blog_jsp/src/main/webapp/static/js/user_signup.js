@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // 작성완료 버튼을 찾음
     const btnInsert = document.querySelector('button#btnInsert');
 
-    const spanEmailDomain = document.querySelector('span#emaildomain')
 
 
 
@@ -124,20 +123,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const username = inputUsername.value.trim();
         const password = inputPassword.value.trim();
         const email = inputEmail.value.trim();
-        const emailDomain = spanEmailDomain.textContent;
         const name = inputName.value.trim();
         const birthday = inputBirthday.value.trim();
         const phone = inputPhone.value.trim();
-
-        inputEmail.value = `${email}${emailDomain}`;
-        console.log(inputEmail.value);
+        
         // 개별 필드를 모두 검사
         if (!username || !password || !email || !name || !birthday || !phone) {
             alert('모든 정보를 입력해주세요.');
             return;
         }
-
-        // 이메일 자동 도메인 추가
 
 
         // 생년월일 조건 확인 (YYYY.MM.DD 형식)

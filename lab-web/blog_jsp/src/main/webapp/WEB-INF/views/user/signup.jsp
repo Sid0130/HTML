@@ -37,8 +37,8 @@
                                     <input class="form_itme" id="password" name="password" type="password" placeholder="비밀번호" />
                                 </div>
                                 <div class="form_email me-3" style="display: flex; align-items: center;">
-                                    <input class="form_itme" id="email" name="email" type="email" placeholder="이메일" />
-                                    <span id="emaildomain">@itwill.com</span>
+                                    <input class="form_itme" id="email" name="email" type="text" placeholder="이메일" />
+                                    <input class="form_itme" value="@itwill.com" id="emaildomain" name="emaildomain" readonly/>
                                 </div>
                             </div>
                             <div class="form_list">
@@ -61,7 +61,6 @@
                             <div>
                                 <div class="form_btn">
                                     <button class="btn btn-outline-success" id="btnInsert">작성완료</button>
-<!--                                     <input class="btn btn-outline-success" id="btnInsert" type="submit" value="작성완료"/> -->
                                 </div>
                             </div>
                         </form>
@@ -76,7 +75,7 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
         crossorigin="anonymous"></script>   
         
-        <c:url value="/static/js/user_signup.js" var="userSignUpJS" />   
-        <script src="${userSignUpJS}"></script>  
+<%--         <c:url value="/static/js/user_signup.js" var="userSignUpJS" />    --%>
+<%--         <script src="${userSignUpJS}"></script>   --%>
 	</body>
 </html>

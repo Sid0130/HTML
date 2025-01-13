@@ -43,7 +43,7 @@
                             <div class="mt-2">
                                 <label class="form-label" for="content">내용</label>
                                 <textarea class="form-control" rows="5" id="content" name="content"
-                                     readonly >${ post.content }</textarea>
+                                     readonly > ${post.content}  </textarea>
                                 <!-- input은 values에 값을 넣지만 textarea는 사이에 넣어주면됨 -->
                             </div> 
                             <div class="mt-2" >
@@ -51,6 +51,13 @@
                                 <div style="text-align:left; text-indent:10px;">
                                 <c:forTokens var="fileName" items="${post.files}" delims=",">
                                     <a href="${pageContext.request.contextPath}/static/file/${fileName}" target="_blank">${fileName}</a>
+                                    <c:if test="${fileName.toLowerCase().endsWith('.jpg') 
+                                         or fileName.toLowerCase().endsWith('.jpeg') 
+                                         or fileName.toLowerCase().endsWith('.png') 
+                                         or fileName.toLowerCase().endsWith('.gif')}" >
+                                <img src="${pageContext.request.contextPath}/static/file/${fileName}" 
+                                    alt="${fileName}" style="display:block;"/> 
+                                    </c:if>
                                 </c:forTokens>
                                 </div>
                             </div> 
