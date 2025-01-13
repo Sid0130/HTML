@@ -50,7 +50,7 @@
                                 <label class="form-label" for="files">파일</label>
                                 <div style="text-align:left; text-indent:10px;">
                                 <c:forTokens var="fileName" items="${post.files}" delims=",">
-                                    <a href="/static/file/${fileName}" target="_blank">${fileName}</a>
+                                    <a href="${pageContext.request.contextPath}/static/file/${fileName}" target="_blank">${fileName}</a>
                                 </c:forTokens>
                                 </div>
                             </div> 
