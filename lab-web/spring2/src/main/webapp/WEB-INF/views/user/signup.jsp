@@ -39,6 +39,11 @@
                             name="password" placeholder="비밀번호" />
                     </div>
                     
+                    <%-- password 중복체크 결과를 출력할 영역 --%>
+                    <div id="checkPasswordResult">
+                    
+                    </div>
+                    
                     <div class="mt-2">
                         <input class="form-control" type="email" id="email"
                             name="email" placeholder="이메일" required />

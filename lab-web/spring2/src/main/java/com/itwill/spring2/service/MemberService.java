@@ -3,6 +3,8 @@ package com.itwill.spring2.service;
 import org.springframework.stereotype.Service;
 
 import com.itwill.spring2.domain.Member;
+import com.itwill.spring2.dto.MemberSignInDto;
+import com.itwill.spring2.dto.MemberSignUpDto;
 import com.itwill.spring2.repository.MemberDao;
 import com.itwill.spring2.repository.PostDao;
 
@@ -44,5 +46,18 @@ public class MemberService {
 		return(member == null); // 값이 없으면 true고 없으면 false
 	}
 	
+	public int create(MemberSignUpDto dto) {
+		log.debug("create(dto = {})", dto);
+		
+		int result = memberDao.insert(dto.toEntity());
+		
+		return result;
+	}
 	
+	public Member read(MemberSignInDto dto) {
+		
+		Member member = memberDao.selectByUsernameAndPassword(dto.toEntity());
+		return member;
+		
+	}
 }

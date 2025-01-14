@@ -14,8 +14,9 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
         rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
         crossorigin="anonymous">
-    </head>
-    <body>
+
+	</head>
+	<body>
     <div>
         <%@ include file="./fragments/header.jspf"%>
 
@@ -25,6 +26,7 @@
 
             <!-- 메인 이미지 -->
             <div>
+
                 <section>
                     <div id="headerimg">
                         <div class="ret"></div>
@@ -34,8 +36,6 @@
                 </section>
             </div>
             
-
-
         
             <!-- 카드형 이미지 -->
             <div id="homebody">
@@ -114,6 +114,7 @@
                                     card's content.</p>
                             </div>
                         </div>
+
                         <div class="card">
                             <img src="./static/image/hc8.jpg" class="card-img-top" >
                             <div class="card-body">
@@ -144,6 +145,7 @@
                     </div>
                 </section>
             </div>
+
             <div class="middle"></div>
 
             <div>
@@ -160,6 +162,7 @@
                       <img src="./static/image/waves_gentl01.jpg" class="d-block w-100" alt="Third slide">
                     </div>
                   </div>
+
 
                   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

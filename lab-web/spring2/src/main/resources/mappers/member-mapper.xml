@@ -13,4 +13,14 @@
     <select id="selectByEmail" resultType="Member">
         select * from members where email = #{emial}
     </select>
+    
+    <insert id="insert"> 
+        insert into members (username, password, email, created_time, modified_time)
+        values (#{username}, #{password}, #{email}, systimestamp, systimestamp)
+    </insert>
+    
+    <select id="selectByUsernameAndPassword" resultType="Member">
+        select * from members 
+        where username = #{username} and password = #{password}
+    </select>
 </mapper>
