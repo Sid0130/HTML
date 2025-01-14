@@ -37,7 +37,9 @@
                                     <input class="form_itme" id="password" name="password" type="password" placeholder="비밀번호" />
                                 </div>
                                 <div class="form_email me-3" style="display: flex; align-items: center;">
-                                    <input class="form_itme" id="email" name="email" type="text" placeholder="이메일" />
+
+                                    <input class="form_itme" id="email" name="email" type="email" placeholder="이메일" />
+
                                     <input class="form_itme" value="@itwill.com" id="emaildomain" name="emaildomain" readonly/>
                                 </div>
                             </div>

@@ -5,7 +5,11 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,6 +43,13 @@ public class PostDetailsController extends HttpServlet {
     	// 디버그 출력: doGet메서드 호출 확인
     	log.debug("doGet()");
     	
+    	String action = request.getParameter("action");
+    	if("download".equals(action)) {
+    		handleFileDownload(request,response);
+    		return;
+    	}
+    	
+    	
     	// 요청 파라미터 아이디를 읽음.
     	Integer id = Integer.parseInt(request.getParameter("id")) ;
     	
@@ -51,5 +62,41 @@ public class PostDetailsController extends HttpServlet {
     	// 서버에서 details.jsp로 요청 전달
     	request.getRequestDispatcher("/WEB-INF/views/post/details.jsp").forward(request, response);
 	}
+    
+    private void handleFileDownload(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+    	String fileName = request.getParameter("file");
+    	
+//		if (fileName == null || fileName.isEmpty()) {
+//			response.sendError(HttpServletResponse.SC_BAD_REQUEST, "파일 이름이 없습니다."); 	
+//			return;
+//		}
+    	
+    	String uploadPath =  "C:/Github/HTML/lab-web/blog_jsp/src/main/webapp/static/file";
+//    	String uploadPath =  "C:/java157/tool/git/HTML/lab-web/blog_jsp/src/main/webapp/static/file";
+		File file = new File(uploadPath, fileName);
+		
+		if (!file.exists()) {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND, "파일을 찾을 수 없습니다.");
+            return;
+        }
+		
+		 // 응답 헤더 설정
+        response.setContentType("application/octet-stream");
+        response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
+		
+        try (FileInputStream fis = new FileInputStream(file);
+                OutputStream os = response.getOutputStream()) {
+               byte[] buffer = new byte[4096];
+               int bytesRead;
+               while ((bytesRead = fis.read(buffer)) != -1) {
+                   os.write(buffer, 0, bytesRead);
+               }
+           } catch (IOException e) {
+               log.error("파일 다운로드 중 오류 발생", e);
+               response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "파일 다운로드 실패");
+           }
+		
+    }
 
 }

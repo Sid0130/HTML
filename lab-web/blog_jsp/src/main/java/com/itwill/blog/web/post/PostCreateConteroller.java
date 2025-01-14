@@ -96,7 +96,11 @@ public class PostCreateConteroller extends HttpServlet {
     	
         // 프로젝트 루트 디렉토리 기준으로 저장 경로 설정
         // 저장 경로 설정
-    	String uploadPath = "C:/java157/tool/git/HTML/lab-web/blog_jsp/src/main/webapp/static/file";
+
+//    	String uploadPath = "C:/java157/tool/git/HTML/lab-web/blog_jsp/src/main/webapp/static/file";
+    	String uploadPath = "C:/Github/HTML/lab-web/blog_jsp/src/main/webapp/static/file";
+    	
+
         log.debug("Upload Path: " + uploadPath);
 
         // 저장 디렉토리가 없으면 생성

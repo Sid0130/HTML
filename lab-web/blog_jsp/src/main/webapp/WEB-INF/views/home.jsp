@@ -18,6 +18,27 @@
 	<body>
         <div>
             <%@ include file="./fragments/header.jspf" %>
+            
+            
+            <main>
+                <div>
+                    <section id="header">
+                        <div class="">
+                            <span class="hidden"></span>
+                        </div>
+                    </section>
+                </div>
+                <div>
+                    <section>
+                        <div>
+                            <img id="wallpaper" alt="test" src="./static/image/main_wallpaper.jpg">
+                        </div>
+                    </section>
+                </div>
+            </main>
+                
+            
+            
         </div>
 
 <!--     <div class="text-left"> -->
