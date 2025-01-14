@@ -21,70 +21,85 @@
             
             
             <main>
-                <div>
                     <section id="header">
-                        <div class="">
+                        <div>
                             <span class="hidden"></span>
                         </div>
                     </section>
-                </div>
-                <div>
-                    <section>
+                    <section id="headerimg">
                         <div>
                             <img id="wallpaper" alt="test" src="./static/image/main_wallpaper.jpg">
                         </div>
+                        <div>
+                            <p>test</p>
+                        </div>
                     </section>
-                </div>
+                    <section id="homebody">
+                        <div class="cards-container">
+                            <div class="card" style="width: 18rem;">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                            </div>
+                            <div class="card " style="width: 18rem;">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 18rem;">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                        
+                    <section>
+                    <div class="text-center">
+                        <div class="row">
+                            
+                            <div class="col-8">2 of 2
+                                <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                                  Carousel 내부 컨텐츠
+                                  <div class="carousel-inner">
+                                    첫 번째 슬라이드
+                                    <div class="carousel-item active" data-bs-interval="10000">
+                                      <img src="./static/image/landscape01.jpg" class="d-block w-100 " alt="First slide">
+                                    </div>
+                                    두 번째 슬라이드
+                                    <div class="carousel-item" data-bs-interval="2000">
+                                      <img src="./static/image/trees01.jpg" class="d-block w-100" alt="Second slide">
+                                    </div>
+                                    세 번째 슬라이드
+                                    <div class="carousel-item">
+                                      <img src="./static/image/waves_gentl01.jpg" class="d-block w-100" alt="Third slide">
+                                    </div>
+                                  </div>
+                                
+                                  이전 슬라이드 버튼
+                                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                  </button>
+                                
+                                  다음 슬라이드 버튼
+                                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                  </button>
+                                </div>
+                            </div>
+                    </section>    
             </main>
+            
                 
             
             
         </div>
 
-<!--     <div class="text-left"> -->
-<!--         <div class="row"> -->
-<!--             <h2 class="ms-5"> 최근 목록 </h2> -->
-<!--             <div class="col-4"> -->
-<!--                 <ul class="m-20 fs-5"  style="list-style:none;"> -->
-<!--                     <li class="mt-3"> -->
-<!--                         <a>테스트</a> -->
-<!--                     </li>             -->
-<!--                     <li class="mt-3"> -->
-<!--                         <a>테스트</a> -->
-<!--                     </li>             -->
-<!--                 </ul> -->
-<!--             </div> -->
-<!--             <div class="col-8">2 of 2 -->
-<!--                 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel"> -->
-<!--                   Carousel 내부 컨텐츠 -->
-<!--                   <div class="carousel-inner"> -->
-<!--                     첫 번째 슬라이드 -->
-<!--                     <div class="carousel-item active" data-bs-interval="10000"> -->
-<!--                       <img src="./static/image/landscape01.jpg" class="d-block w-100 " alt="First slide"> -->
-<!--                     </div> -->
-<!--                     두 번째 슬라이드 -->
-<!--                     <div class="carousel-item" data-bs-interval="2000"> -->
-<!--                       <img src="./static/image/trees01.jpg" class="d-block w-100" alt="Second slide"> -->
-<!--                     </div> -->
-<!--                     세 번째 슬라이드 -->
-<!--                     <div class="carousel-item"> -->
-<!--                       <img src="./static/image/waves_gentl01.jpg" class="d-block w-100" alt="Third slide"> -->
-<!--                     </div> -->
-<!--                   </div> -->
-                
-<!--                   이전 슬라이드 버튼 -->
-<!--                   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev"> -->
-<!--                     <span class="carousel-control-prev-icon" aria-hidden="true"></span> -->
-<!--                     <span class="visually-hidden">Previous</span> -->
-<!--                   </button> -->
-                
-<!--                   다음 슬라이드 버튼 -->
-<!--                   <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next"> -->
-<!--                     <span class="carousel-control-next-icon" aria-hidden="true"></span> -->
-<!--                     <span class="visually-hidden">Next</span> -->
-<!--                   </button> -->
-<!--                 </div> -->
-<!--             </div> -->
             
 
 

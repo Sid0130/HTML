@@ -3,9 +3,20 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
 <style>
+
+html, body {
+    overflow-x: hidden; /* 수평 스크롤 방지 */
+    font-family: 'Montserrat', sans-serif;
+}
+
 header {
+    position: sticky;
+    top: 0; /* 화면 상단에 배치 */
+    z-index: 1000; /* 다른 요소보다 위에 표시되도록 설정 */
+    width: 100%; /* 화면 너비에 맞춤 */
     background-color: #F5F5F5; /* Success 색상 */
     padding: 5px 5px; /* 내부 여백 추가 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* 살짝 그림자 추가 */
 }
 
 body {

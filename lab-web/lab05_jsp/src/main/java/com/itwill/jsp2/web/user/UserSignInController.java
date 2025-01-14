@@ -59,7 +59,9 @@ public class UserSignInController extends HttpServlet {
     		// username과 password가 일치하는 사용자가 있는 경우 -> 로그인 성공
     		// 세션에 로그인 정보를 저장 -> 포스트 목록 페이지로 이동(redirect)
     		HttpSession session = request.getSession();
-    		session.setAttribute("signInUser", member.getUsername());
+    		Object signedInUser = session.getAttribute("signedInUser");
+    		
+    		session.setAttribute("signedInUser", member.getUsername());
     		
     		// target 페이지로 이동(redirect)
     		if (target != null && !target.equals("")) { // 로그인 정보가 있는 경우
