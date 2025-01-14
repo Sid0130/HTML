@@ -1,19 +1,35 @@
 @charset "UTF-8";
 
 body, html {
-/*     background-color: #364c63; */
-/*     background: linear-gradient(to right, #364c63, #40536d, #4b6077); */
+    width: 100%;
+    height: 100%;
 }
 
-section#header{
+div#header{
     height: 125px;
-background: linear-gradient(to bottom, rgba(54, 76, 99, 0.1), transparent);
+    width: 100%; /* 화면 너비에 맞춤 */
+    background: linear-gradient(to bottom, rgba(54, 76, 99, 0.1), transparent);
 
+}
+
+div#headerimg{
+    width: 100%;
+    height: 800px;
 }
 
 img#wallpaper {
-    width: 1500px;
-    max-width: 100%;
-    height: auto;
+    width: 1200px; /* 컨테이너 너비 (이미지 크기와 일치) */
+    height: auto; /* 비율 유지 */
     display: block; /* 레이아웃 깨짐 방지 */
+}
+
+
+
+.card-container {
+    display: flex; /* 플렉스박스 활성화 */
+    justify-content: center; /* 수평 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 (필요시 추가) */
+    flex-wrap: wrap; /* 카드들이 화면 크기에 따라 줄 바꿈 */
+    gap: 20px; /* 카드들 간의 간격 */
+    padding: 20px; /* 컨테이너 여백 추가 */
 }
