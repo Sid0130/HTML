@@ -62,9 +62,6 @@ public class UserSignUpController extends HttpServlet {
     	
     	String email = email_ + emaildomain;
     	
-    	String emaildomain = request.getParameter("emaildomain");
-    	
-    	String email = email_ + emaildomain;
     	
     	log.debug("doPost(username={}, name={}, password={}, email={}, phone={}, birthday={})",
     			username, name, password, email, phone, birthday);
