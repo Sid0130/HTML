@@ -25,7 +25,7 @@ body {
 }
 
 header .nav-link {
-    color: #364c63; /* 링크 글씨 흰색 */
+    color: #364c63; /* 링크 글씨 남색 */
     text-decoration: none; /* 밑줄 제거 */
     margin: 0 10px; /* 링크 간격 추가 */
 }

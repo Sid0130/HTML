@@ -1,6 +1,8 @@
 package com.itwill.blog.service;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +24,8 @@ public enum PostService {
 	// 데이터베이스에서 게시물 목록을 조회.
 	public List<Post> read() {
 		log.debug("read()"); // read() 메서드 호출 확인
+		
+		
 		return postDao.select(); 
 	}
 	

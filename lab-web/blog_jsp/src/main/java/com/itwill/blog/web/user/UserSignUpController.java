@@ -76,7 +76,7 @@ public class UserSignUpController extends HttpServlet {
     	// 비지니스 서비스 테이블에 회원 정보 호출 삽입
     	memberService.signUp(member);
     	
-    	String url = request.getContextPath() + "/";
+    	String url = request.getContextPath() + "/user/signin";
     	response.sendRedirect(url);
 	}
 

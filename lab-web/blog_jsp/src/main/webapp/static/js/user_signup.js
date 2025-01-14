@@ -25,11 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // 작성완료 버튼을 찾음
     const btnInsert = document.querySelector('button#btnInsert');
 
-
-
-
-
-
     birthdayInput.addEventListener("input", (e) => {
         let value = e.target.value.replace(/\D/g, ""); // 숫자만 남김
 

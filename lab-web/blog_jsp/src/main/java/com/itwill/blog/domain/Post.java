@@ -2,6 +2,7 @@ package com.itwill.blog.domain;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Post {
 	private Integer id;
@@ -77,7 +78,16 @@ public class Post {
 	public Integer getId() {
 		return id;
 	}
-
+	
+	public String getFormattedCreatedTime() {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분 ss초");
+		return this.createdTime.format(formatter);
+	}
+	
+	public String getFormattedModifiedTime() {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분 ss초");
+		return this.modifiedTime.format(formatter);
+	}
 	
 	@Override
 	public String toString() {
