@@ -67,13 +67,8 @@ public class PostDetailsController extends HttpServlet {
 			throws ServletException, IOException {
     	String fileName = request.getParameter("file");
     	
-//		if (fileName == null || fileName.isEmpty()) {
-//			response.sendError(HttpServletResponse.SC_BAD_REQUEST, "파일 이름이 없습니다."); 	
-//			return;
-//		}
-    	
-    	String uploadPath =  "C:/Github/HTML/lab-web/blog_jsp/src/main/webapp/static/file";
-//    	String uploadPath =  "C:/java157/tool/git/HTML/lab-web/blog_jsp/src/main/webapp/static/file";
+//    	String uploadPath =  "C:/Github/HTML/lab-web/blog_jsp/src/main/webapp/static/file";
+    	String uploadPath =  "C:/java157/tool/git/HTML/lab-web/blog_jsp/src/main/webapp/static/file";
 		File file = new File(uploadPath, fileName);
 		
 		if (!file.exists()) {

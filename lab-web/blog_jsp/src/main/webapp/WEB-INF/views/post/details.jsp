@@ -3,22 +3,22 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core"  %>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		
-		<!-- Bootstrap을 사용하기 위한 meta name="viewport" 설정. -->
+    <head>
+        <meta charset="UTF-8">
+        
+        <!-- Bootstrap을 사용하기 위한 meta name="viewport" 설정. -->
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         
-		<title>Blog_Jsp : 게시글 정보</title>
-		
-		<!-- Bootstrap CSS -->
+        <title>Blog_Jsp : 게시글 정보</title>
+        
+        <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
             rel="stylesheet" 
             integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
             crossorigin="anonymous" />
-	</head>
-	<body>
-		<div>
+    </head>
+    <body>
+        <div>
             <%@ include file="../fragments/header.jspf" %>
             
             <main class="mt-2 container-fluid">
@@ -71,12 +71,12 @@
                             <div class="mt-2">
                                 <label class="form-label" for="createdTime">작성시간</label>
                                 <input class="form-control" id="createdTime" name="createdTime" 
-                                    type="text" value="${ post.createdTime }" readonly/>
+                                    type="text" value="${ post.formattedCreatedTime }" readonly/>
                             </div>     
                             <div class="mt-2">
                                 <label class="form-label" for="modifiedTime">최종수정시간</label>
                                 <input class="form-control" id="modifiedTime" name="modifiedTime" 
-                                    type="text" value="${ post.modifiedTime }" readonly/>
+                                    type="text" value="${ post.formattedModifiedTime }" readonly/>
                             </div>   
                         </form>  
                     </div>
@@ -95,10 +95,10 @@
             </main>
         </div>
         
-		
-		<!-- Bootstrap JS -->
+        
+        <!-- Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
             crossorigin="anonymous"></script>
-	</body>
+    </body>
 </html>
