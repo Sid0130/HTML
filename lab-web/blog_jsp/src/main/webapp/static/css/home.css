@@ -30,7 +30,6 @@ section#homebody {
     
 }
 
-div.ret {
     display: flex;
     position: fixed;
     flex-direction: column; /* 아이템을 수직으로 정렬 */
@@ -38,8 +37,10 @@ div.ret {
     bottom: 83%; /* 화면 하단에서 20px 위로 */
     right: 20px; /* 화면 오른쪽에서 5px 안쪽으로 */
     height: auto;
+
     pointer-events: none;
     z-index: 2;
+    border: 6px solid #1A2B6D;
 }
 
 img.github{
@@ -56,6 +57,7 @@ img.InstagramIG{
     height: 60px;
     pointer-events: auto; /* 클릭 가능하도록 설정 */
 }
+
 
 
 
@@ -145,6 +147,7 @@ img.modalcontent{
     max-height: 100vh;
     object-fit: contain;
     border-radius: 10px;
+
 }
 .close {
   position: absolute;
@@ -160,6 +163,15 @@ img.modalcontent{
     height: 200px; /* 중간 여백의 높이 */
     background-color: transparent; /* 필요에 따라 색상을 지정 가능 */
 }
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #333;
+}
+
 
 div.footer-container{
     background-color: #1A2B6D;
@@ -175,6 +187,11 @@ div.footer-container{
 }
 
 
+@media (max-width: 1460px) {
+    .imgline {
+        max-width: 90%; /* 작은 화면에서 너비를 줄임 */
+    }
+}
 
 
 @media screen and (max-width: 1000px) {

@@ -41,6 +41,7 @@
 
                 <section>
                     <div id="headerimg">
+
                         <img id="wallpaper" alt="test"
                             src="./static/image/main_wallpaper.jpg">
                     </div>
@@ -150,6 +151,8 @@
                         </div>
                     </div>
             </section>
+
+
             </main>
         </div>
     <!-- Bootstrap JS -->
