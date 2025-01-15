@@ -27,6 +27,7 @@ import com.itwill.blog.service.PostService;
 
 @WebServlet(name = "postCreateConteroller", urlPatterns = { "/post/create" })
 @MultipartConfig(
+	fileSizeThreshold = 1024 * 1024 * 2,
 	maxFileSize = 1024 * 1024 * 5,
 	maxRequestSize = 1024 * 1024 * 50
 )
