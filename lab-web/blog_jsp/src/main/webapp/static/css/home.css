@@ -8,9 +8,10 @@ div#header{
 
 }
 
-div#headerimg{
-    width: 100%;
-    height: 1500px;
+/* 중간 영역 */
+.middle {
+    height: 500px; /* 중간 여백의 높이 */
+    background-color: transparent; /* 필요에 따라 색상을 지정 가능 */
 }
 
 img#wallpaper {
@@ -18,27 +19,29 @@ img#wallpaper {
     height: auto; /* 비율 유지 */
     display: block; /* 레이아웃 깨짐 방지 */
     z-index: 1;
+    border: 6px solid #1A2B6D;
 }
 
 
 
 section#homebody {
-    background-color: rgb(220, 220, 220);
+    background-color: rgb(230, 230, 230);
     height: 1200px;
     
 }
 
 div.ret {
     position: absolute;
-    left: 0;
-    right: 0;
-    width: 150px;
-    height: 300px;
-    background-color: lightgray;
-    top: 50%; /* 상단에 정확히 붙임 */
+    left: 62%;
+    width: 25%;
+    height: 30%;
+    background-color: rgb(230, 230, 230);
+    top: 80%; /* 상단에 정확히 붙임 */
     pointer-events: none;
     z-index: 2;
+    border: 6px solid #1A2B6D;
 }
+
 
 
 
@@ -93,7 +96,7 @@ div.lines {
 
 .lines-text {
     position: relative; /* 위치 조정 가능하도록 설정 */
-    top: 15%; /* 상단에서 30% 아래로 이동 */
+    top: 15%; 
     left: 40%; /* 부모 요소 기준으로 50% 오른쪽으로 이동 */
     transform: translateX(-20%); /* 중앙에서 약간 왼쪽으로 조정 */
     width: 80%; /* 텍스트 블록의 너비 */
@@ -104,15 +107,18 @@ div.lines {
     font-size: 100px;
 }
 
-
-/* 중간 영역 */
-.middle {
-    height: 150px; /* 중간 여백의 높이 */
-    background-color: transparent; /* 필요에 따라 색상을 지정 가능 */
+.modal {
+    display: flex;
+    top: 0;
+    left: 0;
+    width: 100%; /* 전체 화면 너비 */
+    height: 100%; /* 전체 화면 높이 */
+    background-color: rgba(0, 0, 0, 0.8); /* 검은 배경, 투명도 80% */
+    justify-content: center; /* 가로 방향으로 중앙 정렬 */
+    align-items: center; /* 세로 방향으로 중앙 정렬 */
+    z-index: 1000;
+    
 }
-
-
-
 
 img.modalcontent{
     margin:auto;
@@ -124,12 +130,29 @@ img.modalcontent{
     object-fit: contain;
     border-radius: 10px;
 }
-
-.close{
-    position: aubsolute;
-    top: 15px;
-    
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #333;
 }
+
+
+/* 화면 너비가 768px 이하일 때 .ret 숨기기 */
+@media (max-width: 1460px) {
+    .ret {
+        display: none; /* 화면이 작아지면 숨김 */
+    }
+}
+
+@media (max-width: 1460px) {
+    .imgline {
+        max-width: 90%; /* 작은 화면에서 너비를 줄임 */
+    }
+}
+
 
 @media screen and (max-width: 1000px) {
     

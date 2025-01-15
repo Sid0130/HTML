@@ -29,14 +29,14 @@
 
                 <section>
                     <div id="headerimg">
-                        <div class="ret"></div>
+                        <div class="ret"><span>test</span></div>
                         <img id="wallpaper" alt="test"
-                            src="./static/image/main_wallpaper.jpg"> <span>test</span>
+                            src="./static/image/main_wallpaper.jpg">
                     </div>
                 </section>
             </div>
-            
-        
+            <div class="middle"></div>
+             
             <!-- 카드형 이미지 -->
             <div id="homebody">
                 <section>
@@ -151,7 +151,7 @@
                 </section>
             </div>
 
-            <div class="middle"></div>
+           
 
 <!--             <div> -->
 <!--                 <section id="carousel-section"> -->

@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
     const modal_img = document.querySelector('.modalcontent');
     const span = document.querySelector('.close');
     const modal = document.querySelector('.modal');
+    
 
     images.forEach((img) => {
         img.addEventListener('click', () => {
@@ -23,5 +24,5 @@ document.addEventListener('DOMContentLoaded', ()=> {
     });
     function modalDisplay(text){
     modal.style.display = text;
-}
+    }
 });
