@@ -2,7 +2,7 @@
 
 
 div#header{
-    height: 125px;
+    height: 200px;
     width: 100%; /* 화면 너비에 맞춤 */
     background: linear-gradient(to bottom, rgba(54, 76, 99, 0.1), transparent);
 
@@ -30,17 +30,35 @@ section#homebody {
     
 }
 
-div.ret {
-    position: absolute;
-    left: 62%;
-    width: 25%;
-    height: 30%;
-    background-color: rgb(230, 230, 230);
-    top: 80%; /* 상단에 정확히 붙임 */
+    display: flex;
+    position: fixed;
+    flex-direction: column; /* 아이템을 수직으로 정렬 */
+    align-items: center; /* 수직 정렬된 아이템을 중앙에 정렬 */
+    bottom: 83%; /* 화면 하단에서 20px 위로 */
+    right: 20px; /* 화면 오른쪽에서 5px 안쪽으로 */
+    height: auto;
+
     pointer-events: none;
     z-index: 2;
     border: 6px solid #1A2B6D;
 }
+
+img.github{
+    filter: invert(1);
+    width: 60px;
+    height: 60px;
+    pointer-events: auto; /* 클릭 가능하도록 설정 */
+    cursor: pointer; /* 마우스 커서 변경 */
+    transition: transform 0.3s ease; /* 호버 효과 */
+}
+
+img.InstagramIG{
+    width: 60px;
+    height: 60px;
+    pointer-events: auto; /* 클릭 가능하도록 설정 */
+}
+
+
 
 
 
@@ -129,6 +147,21 @@ img.modalcontent{
     max-height: 100vh;
     object-fit: contain;
     border-radius: 10px;
+
+}
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #333;
+}
+
+/* 끝 영역 */
+.footer {
+    height: 200px; /* 중간 여백의 높이 */
+    background-color: transparent; /* 필요에 따라 색상을 지정 가능 */
 }
 .close {
   position: absolute;
@@ -140,12 +173,19 @@ img.modalcontent{
 }
 
 
-/* 화면 너비가 768px 이하일 때 .ret 숨기기 */
+div.footer-container{
+    background-color: #1A2B6D;
+    width: auto;
+    height: 200px;
+}
+
+
 @media (max-width: 1460px) {
-    .ret {
-        display: none; /* 화면이 작아지면 숨김 */
+    .imgline {
+        max-width: 90%; /* 작은 화면에서 너비를 줄임 */
     }
 }
+
 
 @media (max-width: 1460px) {
     .imgline {

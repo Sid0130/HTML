@@ -15,8 +15,8 @@
         rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
         crossorigin="anonymous">
 
-	</head>
-	<body>
+    </head>
+    <body>
     <div>
         <%@ include file="./fragments/header.jspf"%>
 
@@ -24,12 +24,24 @@
         <main>
             <div id="header"></div>
 
+            <div class="ret">
+                <div>
+                    <a href="https://github.com/" target="_blank">
+                        <img class="github" src="https://tistory3.daumcdn.net/tistory/1688928/skin/images/github.png"/>
+                    </a>
+                </div>
+                <div class="mt-2">
+                    <a href="https://www.instagram.com/" target="_blank">
+                        <img class="InstagramIG" src="./static/image/InstagramIG.png"/>
+                    </a>
+                </div>
+            </div>
             <!-- 메인 이미지 -->
             <div>
 
                 <section>
                     <div id="headerimg">
-                        <div class="ret"><span>test</span></div>
+
                         <img id="wallpaper" alt="test"
                             src="./static/image/main_wallpaper.jpg">
                     </div>
@@ -54,92 +66,71 @@
                         <div class="card">
                             <img src="./static/image/hc1.jpg" class="img" >
                             <div class="card-body">
-                                <p class="card-text">Some quick
-                                    example text to build on the card
-                                    title and make up the bulk of the
-                                    card's content.</p>
+                                <p class="card-text">Yega Wirye
+                                    Multipurpose Sports Center - Perspective View.</p>
                             </div>
                         </div>
                         <div class="card">
                             <img src="./static/image/hc2.jpg" class="img" >
                             <div class="card-body">
-                                <p class="card-text">Some quick
-                                    example text to build on the card
-                                    title and make up the bulk of the
-                                    card's content.</p>
+                                <p class="card-text">ANU CJ Gayang-dong
+                                <br>Development Plan - Perspective View.
+                                </p>
                             </div>
                         </div>
                         <div class="card" >
                             <img src="./static/image/hc3.jpg" class="img">
                             <div class="card-body">
-                                <p class="card-text">Some quick
-                                    example text to build on the card
-                                    title and make up the bulk of the
-                                    card's content.</p>
+                                <p class="card-text">Archifactory Architecture
+                                Multipurpose Public Office - Perspective View.</p>
                             </div>
                         </div>
                         <div class="card">
                             <img src="./static/image/hc4.jpg" class="img" >
                             <div class="card-body">
-                                <p class="card-text">Some quick
-                                    example text to build on the card
-                                    title and make up the bulk of the
-                                    card's content.</p>
+                                <p class="card-text">
+                                Public Health Center New Building Design - Perspective View.</p>
                             </div>
                         </div>
                         <div class="card">
                             <img src="./static/image/hc5.jpg" class="img" >
                             <div class="card-body">
-                                <p class="card-text">Some quick
-                                    example text to build on the card
-                                    title and make up the bulk of the
-                                    card's content.</p>
+                                <p class="card-text">
+                                   Geoje Municipal Jangseungpo Library Detailed Design - Perspective View.</p>
                             </div>
                         </div>
                         <div class="card">
                             <img src="./static/image/hc6.jpg" class="img" >
                             <div class="card-body">
-                                <p class="card-text">Some quick
-                                    example text to build on the card
-                                    title and make up the bulk of the
-                                    card's content.</p>
+                                <p class="card-text">Seongnae Samsung Apartment - Perspective View.</p>
                             </div>
                         </div>
                         <div class="card">
                             <img src="./static/image/hc7.jpg" class="img"  >
                             <div class="card-body">
-                                <p class="card-text">Some quick
-                                    example text to build on the card
-                                    title and make up the bulk of the
-                                    card's content.</p>
+                                <p class="card-text"> 
+                                Majang Serim Apartment Partial Bird's-eye View.</p>
                             </div>
                         </div>
 
                         <div class="card">
                             <img src="./static/image/hc8.jpg" class="img" >
                             <div class="card-body">
-                                <p class="card-text">Some quick
-                                    example text to build on the card
-                                    title and make up the bulk of the
-                                    card's content.</p>
+                                <p class="card-text">ORWS Serenity Golf and Resort
+                                <br>Interior Design.</p>
                             </div>
                         </div>
                         <div class="card">
                             <img src="./static/image/hc9.jpg" class="img" >
                             <div class="card-body">
-                                <p class="card-text">Some quick
-                                    example text to build on the card
-                                    title and make up the bulk of the
-                                    card's content.</p>
+                                <p class="card-text">Grand Hotel Architectural Design Proposal 
+                                - Perspective View.</p>
                             </div>
                         </div>
                         <div class="card">
                             <img src="./static/image/hc10.jpg" class="img" >
                             <div class="card-body">
-                                <p class="card-text">Some quick
-                                    example text to build on the card
-                                    title and make up the bulk of the
-                                    card's content.</p>
+                                <p class="card-text">Chuncheon-si Dong-myeon Mancheolli Development - Perspective View.</p>
                             </div>
                         </div>
                         <!-- 이미지 모달 -->
@@ -150,36 +141,18 @@
                         </div>
                 </section>
             </div>
+            
 
-           
-
-<!--             <div> -->
-<!--                 <section id="carousel-section"> -->
-<!--                 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel"> -->
-<!--                   <div class="carousel-inner"> -->
-<!--                     <div class="carousel-item active" data-bs-interval="10000"> -->
-<!--                       <img src="./static/image/landscape01.jpg" class="d-block w-100 " alt="First slide"> -->
-<!--                     </div> -->
-<!--                     <div class="carousel-item" data-bs-interval="2000"> -->
-<!--                       <img src="./static/image/trees01.jpg" class="d-block w-100" alt="Second slide"> -->
-<!--                     </div> -->
-<!--                     <div class="carousel-item"> -->
-<!--                       <img src="./static/image/waves_gentl01.jpg" class="d-block w-100" alt="Third slide"> -->
-<!--                     </div> -->
-<!--                   </div> -->
+            <section>
+                <div class="footer"></div>
+                    <div class="footer-container">
+                        <div>
+                            
+                        </div>
+                    </div>
+            </section>
 
 
-<!--                   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev"> -->
-<!--                     <span class="carousel-control-prev-icon" aria-hidden="true"></span> -->
-<!--                     <span class="visually-hidden"></span> -->
-<!--                   </button> -->
-
-<!--                   <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next"> -->
-<!--                     <span class="carousel-control-next-icon" aria-hidden="true"></span> -->
-<!--                     <span class="visually-hidden"></span> -->
-<!--                   </button> -->
-<!--                 </div> -->
-<!--                 </section> -->
             </main>
         </div>
     <!-- Bootstrap JS -->

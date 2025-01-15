@@ -10,7 +10,7 @@ html, body {
 }
 
 header {
-    position: sticky;
+    position: fixed;
     top: 0; /* 화면 상단에 배치 */
     z-index: 1000; /* 다른 요소보다 위에 표시되도록 설정 */
     width: 100%; /* 화면 너비에 맞춤 */
@@ -71,7 +71,7 @@ header .nav-link {
 </style>
 
 <header>
-    <nav class="navbar navbar-expand-md bg-body-white navbar-top">
+    <nav class="navbar navbar-expand-lg bg-body-white navbar-top">
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <!-- 로고 -->
             <div class="d-flex align-items-center">
@@ -91,7 +91,7 @@ header .nav-link {
         <!-- Offcanvas 메뉴 -->
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">List</h5>
+                <h5 class="offcanvas-title ms-2" id="offcanvasNavbarLabel">LIST</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">

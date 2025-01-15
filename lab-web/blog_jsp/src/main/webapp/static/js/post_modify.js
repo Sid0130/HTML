@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
        if(result) {
         modifyForm.method = 'post'; // 요청 방식을 post방식
         modifyForm.action = 'update'; // 요청 주소를 localhost:8080/blog/post/update로 설정.
+        modifyForm.enctype = 'multipart/form-data'
         modifyForm.submit(); // 양식 데이터 제출
        } 
     });
