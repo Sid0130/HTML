@@ -27,7 +27,7 @@
                         <form action="${postSearchPage}" method="get">
                             <div class="row">
                                 <div class="col-3">
-                                    <select class="form-control" name="category">
+                                    <select class="form-select" name="category">
                                         <option value="t">제목</option>
                                         <option value="c">내용</option>
                                         <option value="tc">제목+내용</option>
@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="col-2">
                                     <input type="submit" value="검색" 
-                                        class="btn btn-outline-sessus"/>
+                                        class="btn btn-outline-sessues"/>
                                     
                                 </div>
                             </div>

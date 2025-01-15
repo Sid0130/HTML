@@ -114,6 +114,23 @@ div.lines {
 
 
 
+img.modalcontent{
+    margin:auto;
+    display: block;
+    width:  auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100vh;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.close{
+    position: aubsolute;
+    top: 15px;
+    
+}
+
 @media screen and (max-width: 1000px) {
     
 }

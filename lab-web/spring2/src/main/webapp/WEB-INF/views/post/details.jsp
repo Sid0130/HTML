@@ -58,6 +58,9 @@
                                    value="${post.modifiedTime}" readonly/>
                             </div>
                         </form>
+                        
+                        <%-- 로그인 사용자와 포스트 작성자가 같은 경우에만 [수정하기] 버튼을 보여줌. --%>
+                    <c:if test="${signedInUser eq post.author}">
                         <div class="card-footer">
                             <div class="d-flex justify-content-center">
                                 <c:url var="postModifyPage" value="/post/modify">
@@ -67,6 +70,7 @@
                                     href="${postModifyPage}">수정하기</a>
                             </div>
                         </div>
+                    </c:if>
                     </div>
                 </div>
             </main>
@@ -85,7 +89,7 @@
                         <div class="col-10">
                             <textarea class="form-control" rows="3" 
                                  id="ctext" placeholder="댓글 입력"></textarea>
-                            <input class="d-none" id="username" value="guest" readonly>
+                            <input class="d-none" id="username" value="${signedInUser}" readonly>
                         </div>
                         <div class="col-2">
                             <button class="btn btn-outline-success"
@@ -134,6 +138,21 @@
         <!-- Axios Http JS -->
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         
+        
+        <script>
+            //세션에 저장된 로그인 사용자 아이디를 자바스크립트 변수에 저장.
+            // -> comment.js 파일의 코드들에서 그 변수를 사용할 수 있도록 하기 위해서.
+            // JSP 파일의 <script> 태그 안에서는 EL을 사용할 수 있음.
+            // (주의) JS 파일에서는 EL을 사용할 수 없음!
+            
+            // -> 이 변수는 자바스크립트에서 사용할 수 있는 전역 변수가 되고 문자열이 들어가게 됨.
+            // -> 자바스크립트 파일안에서는 EL을 사용 할 수 없고 (한줄한줄 실행돼서) jsp 안에 있는 스크립트 태그에서는
+            //    HTML을 사용하는 일부이기 때문에 EL을 사용 가능. 왜냐하면 서버쪽에서 세션 정보를 집어 넣고 HTML을 만들어 주기 때문에!
+            
+            
+        const signedInUser = '${signedInUser}';
+        </script>    
+                
         <c:url var="commentJS" value="/js/comments.js"/>
         <script src="${commentJS}"></script>
 	</body>
