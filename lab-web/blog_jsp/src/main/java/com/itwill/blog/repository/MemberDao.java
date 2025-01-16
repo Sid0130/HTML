@@ -119,6 +119,42 @@ public enum MemberDao {
 		return result > 0;
 		
 	}
+	
+	// 회원 정보의 아이디과 패스워드를 선택하는 SQL 쿼리문
+		private static final String SQL_SELECT_BY_ID_AND_POINTS =
+				"select * from members where id = ?";
+		
+		// 회원 정보 1개의 아이디와 패스워드의 데이터를 선택 반환
+		public int select(Integer id) {
+
+			log.debug(SQL_SELECT_BY_USERNAME_AND_PASSWORD);
+			log.debug("select(username = {}, password={})", id);
+
+			int result = 0;
+			Connection conn = null;
+			PreparedStatement stmt = null;
+			ResultSet rs = null;
+
+			try {
+				conn = ds.getConnection();
+				stmt = conn.prepareStatement(SQL_SELECT_BY_ID_AND_POINTS);
+				stmt.setInt(1, id);
+
+				rs = stmt.executeQuery();
+
+				if (rs.next()) {
+					result = rs.getInt("points");
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(conn, stmt, rs);
+			}
+
+			return result;
+		}
+	
 		
 	// 회원정보를 담은 Member 객체를 생성하는 메서드
 	public Member toMemberFromResultSet(ResultSet rs) throws SQLException {

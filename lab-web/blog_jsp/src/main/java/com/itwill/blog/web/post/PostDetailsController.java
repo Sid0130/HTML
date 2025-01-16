@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.net.URLEncoder;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -77,6 +78,8 @@ public class PostDetailsController extends HttpServlet {
         }
 		
 		 // 응답 헤더 설정
+		fileName = URLEncoder.encode(fileName , "UTF-8"); // 파일 인코드 변경
+		
         response.setContentType("application/octet-stream");
         response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
 		

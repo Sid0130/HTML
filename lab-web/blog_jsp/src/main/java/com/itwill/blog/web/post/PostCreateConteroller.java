@@ -10,6 +10,7 @@ import jakarta.servlet.http.Part;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -88,7 +89,7 @@ public class PostCreateConteroller extends HttpServlet {
     	postService.create(post);
     	
     	// 게시물 생성 후 게시물 목록 페이지로 리다이렉트
-    	String url = request.getContextPath() + "/post/list"; // 응답 URL 생성
+    	String url = request.getContextPath() + "/post/list" ; // 응답 URL 생성
     	response.sendRedirect(url); // 클라이언트를 목록 페이지로 리다이렉트
 	}
     
