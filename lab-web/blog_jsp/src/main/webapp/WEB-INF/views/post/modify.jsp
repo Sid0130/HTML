@@ -20,6 +20,7 @@
 	<body>
 		<div>
             <%@ include file="../fragments/header.jspf" %>
+            <%@ include file="../fragments/pointMessage.jspf" %>
             
             <main class="mt-2 container-fluid">
                 <div class="card">

@@ -78,7 +78,7 @@ public class PostDetailsController extends HttpServlet {
         }
 		
 		 // 응답 헤더 설정
-		fileName = URLEncoder.encode(fileName , "UTF-8");
+		fileName = URLEncoder.encode(fileName , "UTF-8"); // 파일 인코드 변경
 		
         response.setContentType("application/octet-stream");
         response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");

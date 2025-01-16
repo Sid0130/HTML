@@ -44,7 +44,12 @@ public enum MemberService {
 		}
 		
 		return memberDao.updatePoint(id, points);
+	}
+	public int getCurrentPoints(int id) {
 		
+		int result = memberDao.select(id);
+		
+		return result;
 	}
 	
 

@@ -61,30 +61,29 @@
                             <a href="${userSignUpPage}" id="signUpPage">회원가입</a>
                         </div>
                     </div>
-                    </div>
-                    <c:if test="${not empty message}">
-                        <div class="alert alert-success mt-3" role="alert">
-                            <p>${message}</p>
-                            <p>현재 포인트: ${currentPoints}</p>
-                            <p>지급된 포인트: ${pointAdded}</p>
-                        </div>
-                    </c:if>
-        
-                    <!-- 실패 메시지 -->
-                    <c:if
-                        test="${not empty param.result && param.result == 'failure'}">
-                        <div class="alert alert-danger mt-3" role="alert">
-                            로그인 실패: 아이디와 비밀번호를 확인하세요.</div>
-                    </c:if>
+                </div>
             </main>
         </div>
         
-        
+        <script>
+            console.log("result:", "${result}");
+            console.log("signedInUser:", "${signedInUser}");
+            console.log("currentPoints:", "${currentPoints}");
+            console.log("pointAdded:", "${pointAdded}");
+        </script>       
+        <script>
+        const result = "${result}";
+        const signedInUser = "${signedInUser}";
+        const currentPoints = "${currentPoints}";
+        const pointAdded = "${pointAdded}";
+        </script>
         
         <!-- Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
-        crossorigin="anonymous"></script>  
-        
+        crossorigin="anonymous"></script>
+          
+        <c:url value="/static/js/user_signin.js" var="userSignInJS" />   
+        <script src="${userSignInJS}"></script>  
     </body>
 </html>

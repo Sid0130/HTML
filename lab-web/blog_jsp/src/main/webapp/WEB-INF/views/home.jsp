@@ -19,8 +19,7 @@
     <body>
     <div>
         <%@ include file="./fragments/header.jspf"%>
-
-
+        <%@ include file="./fragments/pointMessage.jspf" %>
         <main>
             <div id="header"></div>
 
