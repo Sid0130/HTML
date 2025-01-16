@@ -140,7 +140,7 @@ public enum PostDao {
 	// 게시물 데이터를 업데이트 하는 SQL_UPDATE 쿼리문
 	private static final String SQL_UPDATE =
 			"update posts "
-			+ "set title = ?, content = ?, modified_time = systimestamp "
+			+ "set title = ?, content = ?, files = ?, modified_time = systimestamp "
 			+ "where id = ?";
 	
 	public int update(Post post) {
@@ -156,7 +156,8 @@ public enum PostDao {
 			//게시물 데이터를 SQL 쿼리 파라미터에 바인딩
 			stmt.setString(1, post.getTitle());
 			stmt.setString(2, post.getContent());
-			stmt.setInt(3, post.getId());
+			stmt.setString(3, post.getFiles());
+			stmt.setInt(4, post.getId());
 			
 			// 바인된 값을 업데이트
 			result = stmt.executeUpdate();

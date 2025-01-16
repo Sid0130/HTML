@@ -27,7 +27,7 @@
             <div class="ret">
                 <div>
                     <a href="https://github.com/" target="_blank">
-                        <img class="github" src="https://tistory3.daumcdn.net/tistory/1688928/skin/images/github.png"/>
+                        <img class="github" src="./static/image/github.png"/>
                     </a>
                 </div>
                 <div class="mt-2">

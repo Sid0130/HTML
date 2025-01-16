@@ -36,4 +36,16 @@ public enum MemberService {
 		
 	}
 
+	public boolean addPoints(int id, int points) {
+		log.debug("addPoints(id={},points={})", id, points);
+		
+		if(points <= 0) {
+			return false;
+		}
+		
+		return memberDao.updatePoint(id, points);
+		
+	}
+	
+
 }

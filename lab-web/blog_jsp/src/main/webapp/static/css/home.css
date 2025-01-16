@@ -29,18 +29,17 @@ section#homebody {
     height: 1200px;
     
 }
-
+div.ret{
     display: flex;
     position: fixed;
     flex-direction: column; /* 아이템을 수직으로 정렬 */
     align-items: center; /* 수직 정렬된 아이템을 중앙에 정렬 */
-    bottom: 83%; /* 화면 하단에서 20px 위로 */
-    right: 20px; /* 화면 오른쪽에서 5px 안쪽으로 */
+    bottom: 10vh; /* 화면 높이에 비례하여 설정 */
+    right: 2vw;  /* 화면 너비에 비례하여 설정 */
+    transform: translate(0, 50%); /* 정확한 정렬 보정 */
     height: auto;
-
     pointer-events: none;
     z-index: 2;
-    border: 6px solid #1A2B6D;
 }
 
 img.github{

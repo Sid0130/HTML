@@ -90,6 +90,35 @@ public enum MemberDao {
 		}
 		return result;
 	}
+	
+	private static final String SQL_UPDATE_BY_POINT = 
+			"update members "
+			+ "set points = points + ? "
+			+ "where id = ?";
+	
+	public boolean updatePoint(Integer id, Integer points) {
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		int result = 0;
+		
+		try {
+			conn = ds.getConnection();
+			stmt = conn.prepareStatement(SQL_UPDATE_BY_POINT);
+			
+			stmt.setInt(1, points);
+			stmt.setInt(2, id);
+		
+			result = stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			close(conn, stmt);
+		}
+		return result > 0;
+		
+	}
 		
 	// 회원정보를 담은 Member 객체를 생성하는 메서드
 	public Member toMemberFromResultSet(ResultSet rs) throws SQLException {

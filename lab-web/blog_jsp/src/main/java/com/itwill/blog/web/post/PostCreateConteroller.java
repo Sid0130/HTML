@@ -63,6 +63,7 @@ public class PostCreateConteroller extends HttpServlet {
     @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
+    	request.setCharacterEncoding("UTF-8");
     	// post 디버그 출력.
     	log.debug("doPost()");
     	
@@ -70,7 +71,6 @@ public class PostCreateConteroller extends HttpServlet {
     	String title = request.getParameter("title"); // 제목 읽기
     	String content = request.getParameter("content"); // 내용 읽기
     	String author = request.getParameter("author"); // 작성자 읽기
-//    	String files = request.getParameter("files");
     	
     	List<String> fileNames = saveUploadeFiles(request);
     	String files = String.join(",", fileNames);

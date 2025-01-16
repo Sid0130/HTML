@@ -51,6 +51,9 @@
                                 <input class="form-control" id="author" name="author" 
                                         type="text" value="${ post.author }" readonly/>
                             </div>
+                            <div>
+                                <input class="d-none" name="existingFiles" value="${post.files}">
+                            </div>
                             <div class="mt-2">
                                 <lable class="form-label" for="content">파일</lable>
                                 <small class="text-muted ms-2">현재 파일: ${post.files}</small>

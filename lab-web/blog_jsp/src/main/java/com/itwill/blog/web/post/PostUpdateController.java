@@ -11,6 +11,8 @@ import jakarta.servlet.http.Part;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,7 +38,6 @@ public class PostUpdateController extends HttpServlet {
 	// 비지니스 로직을 처리하는 서비스 객체 생성 (싱글톤 패턴)
 	private final PostService postService = PostService.INSTANCE;      
 	
-	private static final String UPLOAD_DIRECTORY = "C:/Github/HTML/lab-web/blog_jsp/src/main/webapp/static/file";
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -49,53 +50,27 @@ public class PostUpdateController extends HttpServlet {
     @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-    	
+    	request.setCharacterEncoding("UTF-8");
     	// 양식 데이터를 읽음
     	Integer id = Integer.parseInt(request.getParameter("id"));
     	String title = request.getParameter("title");
     	String content = request.getParameter("content");
-    	String filePath = request.getParameter("files");
+    	String existingFiles = request.getParameter("existingFiles");
     	
-    	// 새 파일 업로드
-    	Part filePart = request.getPart("files");
-    	// 업로드된 파일 이름을 읽고
-    	String uploadedFileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-    	String uploadDirectory = UPLOAD_DIRECTORY;
-    	
-    	// "C:/java157/tool/git/HTML/lab-web/blog_jsp/src/main/webapp/static/file";
-    	// "C:/Github/HTML/lab-web/blog_jsp/src/main/webapp/static/file";
-    	
-    	File uploadDir = new File(uploadDirectory);
-    	if(!uploadDir.exists()) {
-    		uploadDir.mkdir(); // 업로드 디렉토리가 없을 시 생성.
-    	}
-    	
-    	String newFilePath = null;
-
-    	if (uploadedFileName != null && !uploadedFileName.isEmpty()) {
-    	    // 새 파일이 업로드된 경우
-    	    newFilePath = uploadDirectory + File.separator + uploadedFileName;
-    	    filePart.write(newFilePath);
-
-    	    // 기존 파일 삭제
-    	    if (filePath != null && !filePath.isEmpty()) {
-    	        File oldFile = new File(filePath);
-    	        if (oldFile.exists()) {
-    	            oldFile.delete();
-    	        }
-    	    }
-    	} else {
-    	    // 새 파일이 없으면 기존 파일 경로 유지
-    	    newFilePath = filePath;
-    	    log.debug("No new file uploaded. Retaining existing file: {}", filePath);
-    	}
+    	// 기존 파일 삭제
+        if (existingFiles != null && !existingFiles.isEmpty()) {
+            deleteFiles(existingFiles);
+        }
+ 
+    	List<String> fileNames = saveUploadeFiles(request);
+    	String files = String.join(",", fileNames);
     	
     	// 포스트 객체 생성 및 빌더패턴 적용
     	Post post = Post.bulider()
     			.id(id)
     			.title(title)
     			.content(content)
-    			.files(newFilePath)
+    			.files(files)
     			.build();
     	
     	
@@ -109,5 +84,65 @@ public class PostUpdateController extends HttpServlet {
     	String url = request.getContextPath() + "/post/list";
     	response.sendRedirect(url);
 	}
+    
+    
+    private void deleteFiles(String existingFiles) {
+    	String uploadPath = "C:/java157/tool/git/HTML/lab-web/blog_jsp/src/main/webapp/static/file";
+    	
+    	String[] files = existingFiles.split(",");
+    	
+    	for(String fileName : files) {
+    		File file = new File(uploadPath + File.separator + fileName);
+    		if (file.exists() && file.isFile()) {
+                if (file.delete()) {
+                    log.debug("Deleted file: {}", file.getAbsolutePath());
+                } else {
+                    log.warn("Failed to delete file: {}", file.getAbsolutePath());
+                }
+            }
+    	}
+    }
+    
+    
+    private List<String> saveUploadeFiles(HttpServletRequest request) throws ServletException, IOException {
+    	List<String> fileNames = new ArrayList<>();
+    	
+        // 프로젝트 루트 디렉토리 기준으로 저장 경로 설정
+        // 저장 경로 설정
 
+    	String uploadPath = "C:/java157/tool/git/HTML/lab-web/blog_jsp/src/main/webapp/static/file";
+//    	String uploadPath = "C:/Github/HTML/lab-web/blog_jsp/src/main/webapp/static/file";
+    	
+
+        log.debug("Upload Path: " + uploadPath);
+
+        // 저장 디렉토리가 없으면 생성
+        File uploadDir = new File(uploadPath);
+        if (!uploadDir.exists()) {
+            if (uploadDir.mkdirs()) {
+                log.debug("Directory created: " + uploadPath);
+            } else {
+                throw new IOException("Failed to create directory: " + uploadPath);
+            }
+        }
+
+        // 파일 저장
+        for (Part part : request.getParts()) {
+            if ("files".equals(part.getName()) && part.getSize() > 0) {
+                // 업로드된 파일 이름 가져오기
+                String fileName = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+                String savedPath = uploadPath + File.separator + fileName;
+
+                try {
+                    // 파일을 저장 경로에 저장
+                    part.write(savedPath);
+                    fileNames.add(fileName); // 파일 이름 저장
+                    log.debug("File saved to: " + savedPath);
+                } catch (IOException e) {
+                    log.error("File save failed for: " + savedPath, e);
+                }
+            }
+        }
+		return fileNames;
+    }
 }
