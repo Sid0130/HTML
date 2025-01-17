@@ -38,21 +38,6 @@ public class PostSearchController extends HttpServlet {
     @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-//    	// 리퀘스트 요청 파라미터를 읽음
-//    	String category = request.getParameter("category");
-//    	String keyword = request.getParameter("keyword");
-//    	log.debug("doGet(category={}, keyword={})", category,keyword);
-//    	
-//    	
-//    	
-//    	
-//    	List<Post> post = postService.read(category, keyword);
-//    	
-//    	request.setAttribute("posts", post);
-//    	
-//    	
-//    	request.getRequestDispatcher("/WEB-INF/views/post/list.jsp").forward(request, response);
-        // 리퀘스트 요청 파라미터를 읽음
     	
         String category = request.getParameter("category");
         String keyword = request.getParameter("keyword");

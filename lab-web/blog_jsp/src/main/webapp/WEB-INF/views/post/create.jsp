@@ -23,7 +23,7 @@
         
         <main>
             <div class="mt-2 container-fluid">
-                <div class="card">
+                <div class="card mt-5">
                     <div class="card-header">
                         <h2>새 글 작성</h2>
                     </div>

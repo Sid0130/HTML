@@ -3,7 +3,7 @@
     xmlns="https://jakarta.ee/xml/ns/jakartaee"
     xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
     id="WebApp_ID" version="6.0">
-    <display-name>blog_jsp</display-name>
+    <display-name>blog</display-name>
     
     <!-- 필터 & 필터 매핑 설정 -->
     <filter>

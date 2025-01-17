@@ -21,16 +21,15 @@
             <%@ include file="../fragments/pointMessage.jspf" %>
         </div>
         
-        <main class="mt-2 container-fluid">
+        <main class="container-fluid mt-5">
         <div class="card">
-            <div class="card-header d-flex align-items-center justify-content-between">
-                <h2>게시판</h2>
-                <div class="form_search">
+            <div class="card-header mt-3">
+                <div class="form_search d-flex align-items-center justify-content-end">
                 <c:url value="/post/search" var="postSearchPage"/>
                     <form action="${postSearchPage}" method="get">
                         <div class="row">
                             <div class="col-3">
-                                <select class="form-control" name="category">
+                                <select class="form-select" name="category">
                                     <option ${param.category == "t" ? "selected" : ""} value="t">제목</option>
                                     <option ${param.category == "c" ? "selected" : ""} value="c">내용</option>
                                     <option ${param.category == "tc" ? "selected" : ""} value="tc">제목+내용</option>

@@ -24,7 +24,7 @@
             
             
             <main class="mt-2 container-fluid">
-                <div class="card">
+                <div class="card mt-5">
                     <div class="card-header">
                         <div>
                             <h2>게시글 정보</h2>
